@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+	title = 'Admin Panel';
+	menuItems: MenuItem[];
+
+	constructor() {
+
+		this.menuItems = [
+			{ name: "Статистика", route: "/stats" },
+			{ name: "Игры", route: "/apps" },
+			{ name: "Добавить", route: "/add" },
+			{ name: "Настройки", route: "/settings" }
+		];
+	}
+
+}
+
+export interface MenuItem {
+	name: string;
+	route: string;
 }
