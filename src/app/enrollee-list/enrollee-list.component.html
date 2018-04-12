@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col form-column">
+
+			<div class="example-container mat-elevation-z8">
+				<mat-table #table [dataSource]="dataSource">
+					<!-- Position Column -->
+					<ng-container matColumnDef="position">
+						<mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+						<mat-cell *matCellDef="let student"> {{student.position}} </mat-cell>
+					</ng-container>
+			
+					<!-- Name Column -->
+					<ng-container matColumnDef="name">
+						<mat-header-cell *matHeaderCellDef> ФИО </mat-header-cell>
+						<mat-cell *matCellDef="let student"> {{student.fullName}} </mat-cell>
+					</ng-container>
+			
+					<!-- Weight Column -->
+					<ng-container matColumnDef="weight">
+						<mat-header-cell *matHeaderCellDef> Дата рождения </mat-header-cell>
+						<mat-cell *matCellDef="let student"> {{student.dateOfBirth}} </mat-cell>
+					</ng-container>
+			
+					<!-- Symbol Column -->
+					<ng-container matColumnDef="symbol">
+						<mat-header-cell *matHeaderCellDef> Направление </mat-header-cell>
+						<mat-cell *matCellDef="let student"> {{student.spec}} </mat-cell>
+					</ng-container>
+			
+					<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+				</mat-table>
+			</div>
+
+		</div>
+	</div>
+</div>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-add',
@@ -7,31 +8,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+	public alerts: Array<IAlert> = [];
+
+	constructor() { 
+		this.alerts.push({
+      id: 1,
+      type: 'success',
+      message: 'This is an success alert',
+    });
+	}
+
+	public closeAlert(alert: IAlert) {
+    const index: number = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
+	}	
 
   ngOnInit() {
-
-		var inputs = document.querySelectorAll( '.inputfile' );
-		Array.prototype.forEach.call( inputs, function( input )
-		{
-			var label	 = input.nextElementSibling,
-				labelVal = label.innerHTML;
-
-			input.addEventListener( 'change', function( e )
-			{
-				var fileName = '';
-				if( this.files && this.files.length > 1 )
-					fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-				else
-					fileName = e.target.value.split( '\\' ).pop();
-
-				if( fileName )
-					label.querySelector( 'span' ).innerHTML = fileName;
-				else
-					label.innerHTML = labelVal;
+		$(document).ready(function() {
+			$('#chooseFile').bind('change', function () {
+				let filename: any = $("#chooseFile").val();
+				if (/^\s*$/.test(filename)) {
+					$(".file-upload").removeClass('active');
+					$("#noFile").text("No file chosen..."); 
+				}
+				else {
+					$(".file-upload").addClass('active');
+					$("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+				}
 			});
 		});
-
+		
   }
 
+}
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
 }

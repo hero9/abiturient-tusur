@@ -5,33 +5,45 @@
 				<mat-tab-group>
 
 					<mat-tab label="Новость">
-						<form class="example-form">
-							<div class="example-container">
-								<mat-form-field>
-									<input matInput placeholder="Заголовок">
-								</mat-form-field>
+						<form class="news-form">
+							<div class="news-container">
+								<input matInput placeholder="Заголовок">
 								<mat-form-field>
 									<textarea matInput placeholder="Текст новости"></textarea>
 								</mat-form-field>
-									<p>Прикрепить изображение</p>
-									<p><input type="file" name="photo" multiple accept="image/*,image/jpeg">
-									<input mat-button color="primary" type="submit" value="Отправить"></p>
+								<div class="file-upload">
+									<div class="file-select">
+										<div class="file-select-button" id="fileName">Выберите</div>
+										<div class="file-select-name" id="noFile">Изображение не выбрано...</div> 
+										<input type="file" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg">
+									</div>
+								</div>
+								<button mat-button color="primary">Опубликовать</button>
+								<p *ngFor="let alert of alerts" class="alert-wrapper">
+									<ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+								</p>
 							</div>
 						</form>
 					</mat-tab>
 
 					<mat-tab label="Мероприятие">
-							<form class="example-form">
-									<div class="example-container">
-										<mat-form-field>
-											<input matInput placeholder="Заголовок">
-										</mat-form-field>
+							<form class="event-form">
+									<div class="event-container">
+										<input matInput placeholder="Заголовок">
 										<mat-form-field>
 											<textarea matInput placeholder="Текст новости"></textarea>
 										</mat-form-field>
-											<p>Прикрепить изображение</p>
-											<p><input type="file" name="photo" multiple accept="image/*,image/jpeg">
-											<input mat-button color="primary" type="submit" value="Отправить"></p>
+										<div class="file-upload">
+											<div class="file-select">
+												<div class="file-select-button" id="fileName">Выберите</div>
+												<div class="file-select-name" id="noFile">Изображение не выбрано...</div> 
+												<input type="file" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg">
+											</div>
+										</div>
+										<button mat-button color="primary">Опубликовать</button>
+										<p *ngFor="let alert of alerts">
+											<ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+										</p>
 									</div>
 								</form>
 					</mat-tab>
