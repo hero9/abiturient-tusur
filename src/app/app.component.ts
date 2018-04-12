@@ -1,16 +1,24 @@
-import { Component, EventEmitter } from '@angular/core';
-import * as $ from 'jquery';
+import { Component, EventEmitter,OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = 'Admin Panel';
 	menuItems: MenuItem[];
+	options: FormGroup;
 
-	constructor() {
+
+	constructor(fb: FormBuilder) {
+		
+		this.options = fb.group({
+      'fixed': false,
+      'top': 0,
+      'bottom': 0,
+    });
 
 		this.menuItems = [
 			{ name: "Статистика", route: "/stats" },
@@ -19,6 +27,11 @@ export class AppComponent {
 			{ name: "Настройки", route: "/settings" }
 		];
 	}
+
+	ngOnInit() {
+		
+	}
+	
 
 }
 

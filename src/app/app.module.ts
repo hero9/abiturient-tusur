@@ -2,14 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
-import { MaterializeModule } from 'angular2-materialize';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppsComponent } from './apps/apps.component';
 import { AddComponent } from './add/add.component';
 import { StatsComponent } from './stats/stats.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FormBuilder } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +22,7 @@ import { SettingsComponent } from './settings/settings.component';
     AppsComponent,
     AddComponent,
     StatsComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +34,10 @@ import { SettingsComponent } from './settings/settings.component';
 			{ path: 'add', component: AddComponent },
 			{ path: 'settings', component: SettingsComponent }
 		]),
-		MaterializeModule
+		BrowserAnimationsModule,
+		MaterialModule
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

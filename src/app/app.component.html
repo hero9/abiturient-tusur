@@ -1,25 +1,24 @@
-<nav>
-	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-	<div class="nav-wrapper">
-		<a href="#" class="top-title">{{ title || uppercase }}</a>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="collapsible.html">Выйти</a></li>
-		</ul>
-	</div>
-</nav>
-<ul id="slide-out" class="side-nav fixed">
-	<li><div class="user-view">
-		<div class="background">
-			<img src="assets/images/office.jpg">
-		</div>
-		<a href="#!user"><img class="circle" src="assets/images/hero.jpg"></a>
-		<a href="https://vk.com/almabekgm"><span class="white-text name">Галымжан Алмабек</span></a>
-		<a href="#!email"><span class="white-text email">almabek.galym@gmail.com</span></a>
-	</div></li>
-	<li routerLinkActive="active"><a routerLink="/stats" class="waves-effect" href="#!"><i class="material-icons">graphic_eq</i>Статистика</a></li>
-	<li routerLinkActive="active"><a routerLink="/apps" class="waves-effect" href="#!"><i class="material-icons">games</i>Игры</a></li>
-	<li routerLinkActive="active"><a routerLink="/add" class="waves-effect" href="#!"><i class="material-icons">add</i>Добавить</a></li>
-	<li routerLinkActive="active"><a routerLink="/settings" class="waves-effect" href="#!"><i class="material-icons">settings</i>Настройки</a></li>
-</ul>
+<ng-container>
+	
+	<mat-toolbar color="primary">
+		<span>Админ панель</span>
+		<button mat-button>Выход</button>
+	</mat-toolbar>		
+
+	<mat-sidenav-container>
+		<mat-sidenav>Start</mat-sidenav>
+		<mat-sidenav-content>
+			<mat-nav-list>
+				<span class="avatar">
+					<img src="../assets/images/hero.jpg" alt="Your photo">
+				</span>
+				<a class="user-name">Галымжан Алмабек</a>
+				<mat-divider></mat-divider>
+				<a mat-list-item [routerLink]="menuItem.route" *ngFor="let menuItem of menuItems" style="color:#fff;"> {{ menuItem.name }} <mat-divider></mat-divider></a>
+			</mat-nav-list>	
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+  
+</ng-container>
 
 <router-outlet></router-outlet>

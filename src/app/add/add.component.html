@@ -1,7 +1,42 @@
-<ul class="list-group">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="container">
+		<div class="row">
+			<div class="col">
+				<mat-toolbar><span>Добавить новость/мероприятие</span></mat-toolbar>
+				<mat-tab-group>
+
+					<mat-tab label="Новость">
+						<form class="example-form">
+							<div class="example-container">
+								<mat-form-field>
+									<input matInput placeholder="Заголовок">
+								</mat-form-field>
+								<mat-form-field>
+									<textarea matInput placeholder="Текст новости"></textarea>
+								</mat-form-field>
+									<p>Прикрепить изображение</p>
+									<p><input type="file" name="photo" multiple accept="image/*,image/jpeg">
+									<input mat-button color="primary" type="submit" value="Отправить"></p>
+							</div>
+						</form>
+					</mat-tab>
+
+					<mat-tab label="Мероприятие">
+							<form class="example-form">
+									<div class="example-container">
+										<mat-form-field>
+											<input matInput placeholder="Заголовок">
+										</mat-form-field>
+										<mat-form-field>
+											<textarea matInput placeholder="Текст новости"></textarea>
+										</mat-form-field>
+											<p>Прикрепить изображение</p>
+											<p><input type="file" name="photo" multiple accept="image/*,image/jpeg">
+											<input mat-button color="primary" type="submit" value="Отправить"></p>
+									</div>
+								</form>
+					</mat-tab>
+				</mat-tab-group>
+				
+			</div>
+		</div>
+	</div>

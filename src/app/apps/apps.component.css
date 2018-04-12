@@ -1,3 +1,15 @@
-div {
-	text-align: center;
+.card-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.example-card {
+	max-width: 400px;
+}
+
+.main-text p {
+	font-family: 'RobotoRegular';
+	font-size: 1.4em;
 }
