@@ -16,6 +16,6 @@ body {
   float: right;
 }
 
-button:focus {
-	background-color: rgb(59, 83, 175) !important;
+.mat-toolbar {
+	background-color: #fff;
 }

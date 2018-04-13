@@ -7,9 +7,9 @@
 					<mat-tab label="Новость">
 						<form class="news-form">
 							<div class="news-container">
-								<input matInput placeholder="Заголовок">
+								<input matInput placeholder="Заголовок" required>
 								<mat-form-field>
-									<textarea matInput placeholder="Текст новости"></textarea>
+									<textarea matInput placeholder="Текст новости" required></textarea>
 								</mat-form-field>
 								<div class="file-upload">
 									<div class="file-select">
@@ -18,9 +18,11 @@
 										<input type="file" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg">
 									</div>
 								</div>
-								<button mat-button color="primary">Опубликовать</button>
+
+								<button mat-button color="primary" (click)="onClickMe()" id="submit">Опубликовать</button>
+							
 								<p *ngFor="let alert of alerts" class="alert-wrapper">
-									<ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+									<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
 								</p>
 							</div>
 						</form>
@@ -29,9 +31,9 @@
 					<mat-tab label="Мероприятие">
 							<form class="event-form">
 									<div class="event-container">
-										<input matInput placeholder="Заголовок">
+										<input matInput placeholder="Заголовок" required>
 										<mat-form-field>
-											<textarea matInput placeholder="Текст новости"></textarea>
+											<textarea matInput placeholder="Текст новости" required></textarea>
 										</mat-form-field>
 										<div class="file-upload">
 											<div class="file-select">
@@ -40,9 +42,9 @@
 												<input type="file" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg">
 											</div>
 										</div>
-										<button mat-button color="primary">Опубликовать</button>
-										<p *ngFor="let alert of alerts">
-											<ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+										<button mat-button color="primary" (click)="onClickMe()">Опубликовать</button>
+										<p *ngFor="let alert of alerts" class="alert-wrapper">
+											<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
 										</p>
 									</div>
 								</form>

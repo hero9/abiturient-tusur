@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-add',
@@ -9,6 +10,7 @@ import * as $ from 'jquery';
 export class AddComponent implements OnInit {
 
 	public alerts: Array<IAlert> = [];
+	public showAlert: Boolean = false;
 
 	constructor() { 
 		this.alerts.push({
@@ -21,7 +23,15 @@ export class AddComponent implements OnInit {
 	public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
-	}	
+	}
+
+	onClickMe() : void {
+		this.showAlert = true;
+
+		setTimeout(function () {
+			this.showAlert = false;
+		}.bind(this), 3000);
+	}
 
   ngOnInit() {
 		$(document).ready(function() {
@@ -37,10 +47,9 @@ export class AddComponent implements OnInit {
 				}
 			});
 		});
-		
   }
-
 }
+
 export interface IAlert {
   id: number;
   type: string;
