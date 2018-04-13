@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DataService } from './data.service';
 import { RouterModule } from '@angular/router';
 
 
@@ -45,9 +46,10 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 		BrowserAnimationsModule,
 		MaterialModule,
 		FormsModule,
-		NgbModule.forRoot()
+		NgbModule.forRoot(),
+		HttpModule
   ],
-  providers: [FormBuilder],
+providers: [FormBuilder, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

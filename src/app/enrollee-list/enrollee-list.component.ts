@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from  '../../assets/students.json';
+import { DataService } from './../data.service';
 
 @Component({
   selector: 'app-enrollee-list',
@@ -8,17 +8,16 @@ import * as data from  '../../assets/students.json';
 })
 export class EnrolleeListComponent implements OnInit {
 
+	students: Array<any>;
+
+	constructor (private _dataService: DataService) {
+		this._dataService.getStudents()
+			.subscribe(res => this.students = res);
+	}
+
 	ngOnInit() { 
 	}
 	
 	displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = data;
 
-}
-
-export interface StudentsList {
-  position: number;
-  fullName: string;
-	dateOfBirth: string;
-	spec: string;
 }

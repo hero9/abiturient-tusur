@@ -6,16 +6,16 @@
 		"spec": "Back-End" 
 	},
 	{ 
-	"position": 2, 
-	"fullName": "John Travolta", 
-	"dateOfBirth": "13.02.1998", 
-	"spec": "Front-End"
+		"position": 2, 
+		"fullName": "John Travolta", 
+		"dateOfBirth": "13.02.1998", 
+		"spec": "Front-End"
 	},
 	{ 
-	"position": 3, 
-	"fullName": "Alice Merton", 
-	"dateOfBirth": "12.06.1993", 
-	"spec": "Tester"
+		"position": 3, 
+		"fullName": "Alice Merton", 
+		"dateOfBirth": "12.06.1993", 
+		"spec": "Tester"
 	}
 ]
 
