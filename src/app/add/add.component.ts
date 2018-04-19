@@ -1,10 +1,7 @@
-import { Input, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import * as $ from 'jquery';
-import { element } from 'protractor';
 import { DataService } from '../data.service';
-import { type } from 'os';
 
 
 @Component({
@@ -15,6 +12,8 @@ import { type } from 'os';
 export class AddComponent implements OnInit {
 
 	news: any;
+	events: any;
+	emp : String = '';
 
 	public alerts: Array<IAlert> = [];
 	public showAlert: Boolean = false;
@@ -24,29 +23,23 @@ export class AddComponent implements OnInit {
 		this.alerts.push({
       id: 1,
       type: 'success',
-      message: 'This is an success alert',
+      message: 'Ваша запись добавлена!',
     });
 	}
 
-	saveNews(title, newsPreview, newsText, element) {
-		let file = element.files[0];
-		let reader = new FileReader();
-		reader.onloadend = function () {
-			return reader.result;
-		}	
-		reader.readAsDataURL(file);
-		this.dataservice.saveNews(title, newsPreview, newsText, reader.result);
+	saveNews(title, newsPreview, newsText) {
+		this.dataservice.saveNews(title, newsPreview, newsText);
+		this.http.get('/api/news').subscribe(data => {
+			this.news = data;
+		});
 	}
 
-/* 	encodeImageFileAsURL(element) {
-		let file = element.files[0];
-		let reader = new FileReader();
-		reader.onloadend = () => {
-			reader.result;
-		}		
-		reader.readAsDataURL(file);
-		return reader.result;
-	} */
+	saveEvent(title, eventPreview, eventText) {
+		this.dataservice.saveEvent(title, eventPreview, eventText);
+		this.http.get('/api/events').subscribe(data => {
+			this.events = data;
+		});
+	}
 
 	public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
@@ -58,6 +51,7 @@ export class AddComponent implements OnInit {
 		setTimeout(function () {
 			this.showAlert = false;
 		}.bind(this), 3000);
+		this.emp = ' ';
 	}
 
   ngOnInit() {
@@ -66,19 +60,6 @@ export class AddComponent implements OnInit {
 			this.news = data;
 		});	
 
-		$(document).ready(function() {
-			$('#chooseFile').bind('change', function () {
-				let filename: any = $("#chooseFile").val();
-				if (/^\s*$/.test(filename)) {
-					$(".file-upload").removeClass('active');
-					$("#noFile").text("No file chosen..."); 
-				}
-				else {
-					$(".file-upload").addClass('active');
-					$("#noFile").text(filename.replace("C:\\fakepath\\", ""));
-				}
-			});
-		});
 	}
 }
 

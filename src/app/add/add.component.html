@@ -5,61 +5,61 @@
 				<mat-tab-group>
 
 					<mat-tab label="Новость">
-						<form class="news-form" (ngSubmit)="saveNews(title.value, newsText.value, newsPreview.value, image)" #newsForm="ngForm">
+						<form class="news-form" (ngSubmit)="saveNews(title.value, newsPreview.value, editorContent)" #newsForm="ngForm">
 							<div class="news-container">
-								<input matInput placeholder="Заголовок" #title required>
 								<mat-form-field>
-									<textarea matInput placeholder="Превью новости" #newsText required></textarea>
+									<textarea matInput class="title" placeholder="Заголовок" [(value)]="emp" #title required></textarea>
 								</mat-form-field>
-								<mat-form-field>
-									<textarea matInput placeholder="Текст новости" #newsPreview required></textarea>
+								<mat-form-field class="preview-wrapper">
+									<textarea matInput placeholder="Превью" [(value)]="emp" #newsPreview required></textarea>
 								</mat-form-field>
-								<div class="file-upload">
-									<div class="file-select">
-										<div class="file-select-button" id="fileName">Выберите</div>
-										<div class="file-select-name" id="noFile">Изображение не выбрано...</div> 
-										<input type="file" (change)="previewFile()" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg" #image>
-										<img id="img" height="150">
-									</div>
+								<div class="newsText">
+									<h5>Текст новости</h5>
+									<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #newsText required></textarea>
 								</div>
-
-								<button mat-button color="primary" (click)="onClickMe(image)" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
-							
+								<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
 								<p *ngFor="let alert of alerts" class="alert-wrapper">
 									<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
 								</p>
 							</div>
 						</form>
+		
 						<mat-card class="card-item" *ngFor="let item of news">
 							<h4>{{ item.title }}</h4>
-							<div>{{ item.newsText }}</div>
-							<div class="img">{{ imgFile }}</div>
+							<h6>{{ item.newsPreview }}</h6>
+							<p class="e2e-inner-html-bound" [innerHTML]="item.newsText"></p>
 							<strong>{{ item.publishedDate | date}}</strong>
 						</mat-card>
 					</mat-tab>
 
 					<mat-tab label="Мероприятие">
-							<form class="event-form">
-									<div class="event-container">
-										<input matInput placeholder="Заголовок" required>
-										<mat-form-field>
-											<textarea matInput placeholder="Текст новости" required></textarea>
-										</mat-form-field>
-										<div class="file-upload">
-											<div class="file-select">
-												<div class="file-select-button" id="fileName">Выберите</div>
-												<div class="file-select-name" id="noFile">Изображение не выбрано...</div> 
-												<input type="file" name="chooseFile" id="chooseFile" accept="image/*,image/jpeg">
-											</div>
-										</div>
-										<button mat-button color="primary" (click)="onClickMe()">Опубликовать</button>
-										<p *ngFor="let alert of alerts" class="alert-wrapper">
-											<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
-										</p>
-									</div>
-								</form>
+						<form class="news-form" (ngSubmit)="saveEvent(title.value, eventPreview.value, editorContent)" #newsForm="ngForm">
+							<div class="news-container">
+								<mat-form-field>
+									<textarea matInput class="title" placeholder="Заголовок" [(value)]="emp" #title required></textarea>
+								</mat-form-field>
+								<mat-form-field class="preview-wrapper">
+									<textarea matInput placeholder="Превью" [(value)]="emp" #eventPreview required></textarea>
+								</mat-form-field>
+								<div class="newsText">
+									<h5>Текст мероприятия</h5>
+									<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #eventText required></textarea>
+								</div>
+								<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
+								<p *ngFor="let alert of alerts" class="alert-wrapper">
+									<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+								</p>
+							</div>
+						</form>
+				
+						<mat-card class="card-item" *ngFor="let item of events">
+							<h4>{{ item.title }}</h4>
+							<h6>{{ item.eventPreview }}</h6>
+							<p class="e2e-inner-html-bound" [innerHTML]="item.eventText"></p>
+							<strong>{{ item.publishedDate | date}}</strong>
+						</mat-card>
 					</mat-tab>
-				</mat-tab-group>			
+				</mat-tab-group>
 			</div>
 		</div>
 	</div>

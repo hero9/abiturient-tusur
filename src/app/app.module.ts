@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +52,9 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 		NgbModule.forRoot(),
 		HttpModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		FroalaEditorModule.forRoot(),
+		FroalaViewModule.forRoot(),
   ],
 providers: [FormBuilder, DataService, DatePipe],
 bootstrap: [AppComponent]

@@ -10,14 +10,23 @@ export class DataService {
 
 	constructor(private _http: Http) { }
 
-	saveNews(title, newsText, newsPreview, imgFile) {
+	saveNews(title, newsPreview, newsText) {
     const obj = {
 			title: title,
 			newsPreview : newsPreview,
-			imgFile : imgFile,
-      newsText: newsText
+			newsText: newsText
     };
     this._http.post("/api/news", obj)
+        .subscribe(res => console.log("done"));
+	}
+	
+	saveEvent(title, eventPreview, eventText) {
+    const obj = {
+			title: title,
+			eventPreview : eventPreview,
+			eventText: eventText
+    };
+    this._http.post("/api/events", obj)
         .subscribe(res => console.log("done"));
   }
 	
