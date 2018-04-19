@@ -12,19 +12,19 @@
 					</ng-container>
 			
 					<!-- Name Column -->
-					<ng-container matColumnDef="name">
+					<ng-container matColumnDef="fullName">
 						<mat-header-cell *matHeaderCellDef> ФИО </mat-header-cell>
 						<mat-cell *matCellDef="let student"> {{student.fullName}} </mat-cell>
 					</ng-container>
 			
 					<!-- Weight Column -->
-					<ng-container matColumnDef="weight">
+					<ng-container matColumnDef="dateOfBirth">
 						<mat-header-cell *matHeaderCellDef> Дата рождения </mat-header-cell>
 						<mat-cell *matCellDef="let student"> {{student.dateOfBirth}} </mat-cell>
 					</ng-container>
 			
 					<!-- Symbol Column -->
-					<ng-container matColumnDef="symbol">
+					<ng-container matColumnDef="spec">
 						<mat-header-cell *matHeaderCellDef> Направление </mat-header-cell>
 						<mat-cell *matCellDef="let student"> {{student.spec}} </mat-cell>
 					</ng-container>

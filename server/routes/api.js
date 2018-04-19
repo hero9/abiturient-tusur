@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const ObjectID = require('mongodb').ObjectID;
 const mongoose = require('mongoose');
+const Student = require('../models/students.js');
+const News = require('../models/news.js');
+
 
 mongoose.connect('mongodb://localhost:27017/tusur');
 db = mongoose.connection;
+
 
 const sendError = (err, res) => {
 	response.status = 501;
@@ -29,6 +32,30 @@ router.get('/students', (req, res) => {
 			.catch((err) => {
 				sendError(err, res);
 			});
+});
+
+/* POST SINGLE NEWS  */
+router.post('/news', (req, res, next) => {
+  News.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+/* GET ALL NEWS */
+router.get('/news', (req, res, next) => {
+  News.find( (err, products) => {
+    if (err) return next(err);
+    res.json(products);
+  });
+});
+
+/* GET SINGLE STUDENT BY ID */
+router.get('/news/:id', (req, res, next) => {
+  News.findById(req.params.id, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
+  });
 });
 
 module.exports = router;

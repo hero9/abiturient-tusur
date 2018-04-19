@@ -18,6 +18,6 @@ export class EnrolleeListComponent implements OnInit {
 	ngOnInit() { 
 	}
 	
-	displayedColumns = ['position', 'name', 'weight', 'symbol'];
+	displayedColumns = ['position', 'fullName', 'dateOfBirth', 'spec'];
 
 }

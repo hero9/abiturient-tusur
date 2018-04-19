@@ -10,6 +10,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +32,7 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
     AddComponent,
     StatsComponent,
     SettingsComponent,
-    EnrolleeListComponent,
+		EnrolleeListComponent		
   ],
   imports: [
     BrowserModule,
@@ -47,9 +49,11 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 		MaterialModule,
 		FormsModule,
 		NgbModule.forRoot(),
-		HttpModule
+		HttpModule,
+		HttpClientModule,
+		ReactiveFormsModule
   ],
-providers: [FormBuilder, DataService],
-  bootstrap: [AppComponent]
+providers: [FormBuilder, DataService, DatePipe],
+bootstrap: [AppComponent]
 })
 export class AppModule { }

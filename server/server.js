@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
+const logger = require('morgan');
 
 const app = express();
 
 const api = require('./routes/api');
 
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../admin-panel/dist')));
