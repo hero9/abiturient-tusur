@@ -10,8 +10,9 @@ export class DataService {
 
 	constructor(private _http: Http) { }
 
-	saveNews(title, newsPreview, newsText) {
+	saveNews(id, title, newsPreview, newsText) {
     const obj = {
+			id: id,
 			title: title,
 			newsPreview : newsPreview,
 			newsText: newsText

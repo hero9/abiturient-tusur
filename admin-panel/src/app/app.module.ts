@@ -22,6 +22,7 @@ import { AppsComponent } from './apps/apps.component';
 import { AddComponent } from './add/add.component';
 import { StatsComponent } from './stats/stats.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PageComponent } from './page/page.component';
 import { FormBuilder } from '@angular/forms';
 import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 
@@ -33,7 +34,8 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
     AddComponent,
     StatsComponent,
     SettingsComponent,
-		EnrolleeListComponent		
+		EnrolleeListComponent,
+		PageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 			{ path: 'apps', component: AppsComponent },
 			{ path: 'add', component: AddComponent },
 			{ path: 'settings', component: SettingsComponent },
-			{ path: 'enrollee-list', component: EnrolleeListComponent }
+			{ path: 'enrollee-list', component: EnrolleeListComponent },
+			{ path: 'page', component: PageComponent }
 		]),
 		BrowserAnimationsModule,
 		MaterialModule,

@@ -1,18 +1,22 @@
-import { Component, EventEmitter,OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent implements OnInit {
 	title = 'Admin Panel';
 	menuItems: MenuItem[];
 	options: FormGroup;
+	menu : any;
+	page: string;
 
 
-	constructor(fb: FormBuilder) {
+	constructor(fb: FormBuilder, private http: HttpClient) {
 		
 		this.options = fb.group({
       'fixed': false,
@@ -28,7 +32,15 @@ export class AppComponent implements OnInit {
 		];
 	}
 
-	ngOnInit() {}
+	getPage(title) {
+		this.page = title;
+	}
+
+	ngOnInit() {
+		this.http.get('/api/menu').subscribe(data => {
+			this.menu = data;
+		});
+	}
 
 }
 
