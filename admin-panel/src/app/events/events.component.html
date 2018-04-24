@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<mat-card class="card-item" *ngFor="let item of events">
+				<h4>{{ item.title }}</h4>
+				<h6>{{ item.eventPreview }}</h6>
+				<p class="e2e-inner-html-bound" [innerHTML]="item.eventText"></p>
+				<strong>{{ item.publishedDate | date}}</strong>
+			</mat-card>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-events'"><i class="material-icons">add</i></button>
+		</div>
+	</div>
+</div>

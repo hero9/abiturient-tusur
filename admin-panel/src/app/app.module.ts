@@ -19,23 +19,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { StatsRoutingModule } from './stats/stats-routing.module';
 import { AppComponent } from './app.component';
 import { AppsComponent } from './apps/apps.component';
-import { AddComponent } from './add/add.component';
+import { AddNewsComponent } from './add-news/add-news.component';
 import { StatsComponent } from './stats/stats.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageComponent } from './page/page.component';
 import { FormBuilder } from '@angular/forms';
 import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
+import { NewsComponent } from './news/news.component';
+import { EventsComponent } from './events/events.component';
+import { AddEventsComponent } from './add-events/add-events.component';
+import { AddPageComponent } from './add-page/add-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AppsComponent,
-    AddComponent,
+    AddNewsComponent,
     StatsComponent,
     SettingsComponent,
 		EnrolleeListComponent,
-		PageComponent
+		PageComponent,
+		NewsComponent,
+		EventsComponent,
+		AddEventsComponent,
+		AddPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +52,14 @@ import { EnrolleeListComponent } from './enrollee-list/enrollee-list.component';
 			{ path: '', redirectTo: 'stats', pathMatch: 'full' },
 			{ path: 'stats', component: StatsComponent },
 			{ path: 'apps', component: AppsComponent },
-			{ path: 'add', component: AddComponent },
+			{ path: 'add-news', component: AddNewsComponent },
 			{ path: 'settings', component: SettingsComponent },
 			{ path: 'enrollee-list', component: EnrolleeListComponent },
-			{ path: 'page', component: PageComponent }
+			{ path: 'page', component: PageComponent },
+			{ path: 'news', component: NewsComponent },
+			{ path: 'events', component: EventsComponent },
+			{ path: 'add-events', component: AddEventsComponent },
+			{ path: 'add-page', component: AddPageComponent }
 		]),
 		BrowserAnimationsModule,
 		MaterialModule,

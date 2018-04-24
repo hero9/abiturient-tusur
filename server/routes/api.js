@@ -5,6 +5,7 @@ const Student = require('../models/students.js');
 const News = require('../models/news.js');
 const Events = require('../models/events.js');
 const MenuItems = require('../models/menuItems.js');
+const Pages = require('../models/pages.js');
 
 
 mongoose.connect('mongodb://localhost:27017/tusur');
@@ -36,7 +37,6 @@ router.get('/students', (req, res) => {
 			});
 });
 
-/* POST SINGLE NEWS  */
 router.post('/news', (req, res, next) => {
   News.create({
 		id: req.body.id,
@@ -45,9 +45,6 @@ router.post('/news', (req, res, next) => {
 		newsText: req.body.newsText
 	}, (err, post) => {
 		if (err) return next(err);
-	});
-	MenuItems.create({title : req.body.title, id: req.body.id}, (err, post) => {
-		if(err) return next(err);
 		res.json(post);
 	});
 });
@@ -58,6 +55,20 @@ router.post('/events', (req, res, next) => {
     if (err) return next(err);
     res.json(post);
   });
+});
+
+router.post('/pages', (req, res, next) => {
+  Pages.create({
+		id: req.body.id,
+		title: req.body.title,
+		content: req.body.content
+	}, (err, post) => {
+		if (err) return next(err);
+	});
+	MenuItems.create({title : req.body.title, id: req.body.id}, (err, post) => {
+		if(err) return next(err);
+		res.json(post);
+	});
 });
 
 /* GET MENU */
@@ -91,10 +102,9 @@ router.get('/events', (req, res, next) => {
   });
 });
 
-
 /* GET SINGLE STUDENT BY ID */
-router.get('/news/:id', (req, res, next) => {
-  News.findOne( {id : req.params.id}, (err, post) => {
+router.get('/pages/:id', (req, res, next) => {
+  Pages.findOne( {id : req.params.id}, (err, post) => {
     if (err) return next(err);
     res.json(post);
   });

@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<form class="news-form" (ngSubmit)="saveNews(newsTitle.value, newsPreview.value, editorContent)" #newsForm="ngForm">
+				<div class="news-container">
+					<mat-form-field>
+						<textarea matInput class="title" placeholder="Заголовок" #newsTitle required></textarea>
+					</mat-form-field>
+					<mat-form-field class="preview-wrapper">
+						<textarea matInput placeholder="Превью" #newsPreview required></textarea>
+					</mat-form-field>
+					<div class="newsText">
+						<h5>Текст новости</h5>
+						<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #newsText></textarea>
+					</div>
+					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
+					<p *ngFor="let alert of alerts" class="alert-wrapper">
+						<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

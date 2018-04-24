@@ -11,13 +11,14 @@ import { HttpClient } from "@angular/common/http";
 export class PageComponent implements OnChanges {
 
 	@Input() page: string;
-	news: {};
+	pages: {};
 
   constructor( private http: HttpClient ) { }
 
 	ngOnChanges( ...args: any[] ) {
-		this.http.get(`/api/news/${this.page}`).subscribe(data => {
-			this.news = data;
+		this.http.get(`/api/pages/${this.page}`).subscribe(data => {
+			this.pages = data;
+			console.log(data);
 		});
 	}
 }

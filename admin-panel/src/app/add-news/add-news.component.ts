@@ -7,15 +7,12 @@ import * as hash from "hash-string";
 
 
 @Component({
-  selector: "app-add",
-  templateUrl: "./add.component.html",
-  styleUrls: ["./add.component.css"]
+	selector: "add-news",
+  templateUrl: "./add-news.component.html"
 })
-export class AddComponent implements OnInit {
+export class AddNewsComponent implements OnInit {
 	
   news: any;
-	events: any;
-	emp: any = '';
 
   public alerts: Array<IAlert> = [];
   public showAlert: Boolean = false;
@@ -29,7 +26,7 @@ export class AddComponent implements OnInit {
     this.alerts.push({
       id: 1,
       type: "success",
-      message: "Ваша запись добавлена!"
+      message: "Ваша новость добавлена!"
 		});
 		
   }
@@ -39,13 +36,6 @@ export class AddComponent implements OnInit {
     this.http.get("/api/news").subscribe(data => {
 			this.news = data;
 		});
-  }
-
-  saveEvent(eventTitle, eventPreview, eventText) {
-    this.dataservice.saveEvent(eventTitle, eventPreview, eventText);
-    this.http.get("/api/events").subscribe(data => {
-      this.events = data;
-    });
   }
 
   public closeAlert(alert: IAlert) {
@@ -64,9 +54,7 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get("/api/news").subscribe(data => {
-      this.news = data;
-    });
+    
   }
 }
 

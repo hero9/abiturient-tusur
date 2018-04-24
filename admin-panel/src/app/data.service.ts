@@ -20,6 +20,16 @@ export class DataService {
     this._http.post("/api/news", obj)
         .subscribe(res => console.log("done"));
 	}
+
+	savePages(id, title, content) {
+    const obj = {
+			id: id,
+			title: title,
+			content: content
+    };
+    this._http.post("/api/pages", obj)
+        .subscribe(res => console.log("done"));
+	}
 	
 	saveEvent(title, eventPreview, eventText) {
     const obj = {

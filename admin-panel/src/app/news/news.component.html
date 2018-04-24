@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<mat-card class="card-item" *ngFor="let item of news">
+				<h4>{{ item.title }}</h4>
+				<h6>{{ item.newsPreview }}</h6>
+				<p class="e2e-inner-html-bound" [innerHTML]="item.newsText"></p>
+				<strong>{{ item.publishedDate | date}}</strong>
+			</mat-card>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-news'"><i class="material-icons">add</i></button>
+		</div>
+	</div>
+</div>

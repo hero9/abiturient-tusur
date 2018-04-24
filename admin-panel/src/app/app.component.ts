@@ -27,8 +27,10 @@ export class AppComponent implements OnInit {
 		this.menuItems = [
 			{ name: "Статистика", route: "/stats" },
 			{ name: "Игры", route: "/apps" },
-			{ name: "Добавить", route: "/add" },
-			{ name: "Настройки", route: "/settings" }
+			{ name: "Новости", route: "/news" },
+			{ name: "Мероприятия", route: "/events" },
+			{ name: "Настройки", route: "/settings" },
+			{ name: "Добавить разделы", route: "/add-page" }
 		];
 	}
 
