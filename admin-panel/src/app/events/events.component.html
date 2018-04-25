@@ -1,13 +1,24 @@
 <div class="container">
 	<div class="row">
+		<div class="col-md-1"></div>
 		<div class="col">
 			<mat-card class="card-item" *ngFor="let item of events">
+				<button mat-icon-button class="edit_icon" 
+					(click)="deleteEvent(item._id)">
+					<mat-icon ><i class="material-icons">delete</i></mat-icon>
+				</button>
+				<button mat-icon-button class="edit_icon" [routerLink]="'/edit-event'" 
+					(click)="getEditPage(item._id)">
+					<mat-icon ><i class="material-icons">edit</i></mat-icon>
+				</button>
 				<h4>{{ item.title }}</h4>
-				<h6>{{ item.eventPreview }}</h6>
+				<h6><b>{{ item.eventPreview }}</b></h6>
 				<p class="e2e-inner-html-bound" [innerHTML]="item.eventText"></p>
 				<strong>{{ item.publishedDate | date}}</strong>
 			</mat-card>
-			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-events'"><i class="material-icons">add</i></button>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-events'">
+				<i class="material-icons">add</i>
+			</button>
 		</div>
 	</div>
 </div>

@@ -1,8 +1,25 @@
 <div class="container">
 	<div class="row">
+		<div class="col-md-1">{{message}}</div>
 		<div class="col">
-			<p>{{pages?.title}}</p>
-			<p class="e2e-inner-html-bound" [innerHTML]="pages?.content"></p>
+			<mat-card class="card-item" *ngFor="let item of page">
+
+				<button mat-icon-button class="edit_icon" 
+					(click)="deletePage(item._id)">
+					<mat-icon ><i class="material-icons">delete</i></mat-icon>
+				</button>
+
+				<button mat-icon-button class="edit_icon" [routerLink]="'/edit-page'" 
+					(click)="getEditPage(item._id)">
+					<mat-icon ><i class="material-icons">edit</i></mat-icon>
+				</button>
+
+				<a mat-list-item class="page_card" [routerLink]="'/page-content'" 
+						(click)="getPage(item._id)">{{ item.title }}</a>
+			</mat-card>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-page'">
+				<i class="material-icons">add</i>
+			</button>
 		</div>
 	</div>
 </div>

@@ -1,17 +1,18 @@
 <div class="container">
 	<div class="row">
+		<div class="col-md-1"></div>
 		<div class="col">
-			<form class="news-form" (ngSubmit)="saveNews(newsTitle.value, newsPreview.value, editorContent)" #newsForm="ngForm">
-				<div class="news-container">
+			<form class="add-form__wrapper" (ngSubmit)="saveEvent(eventTitle.value, eventPreview.value, editorContent)" #newsForm="ngForm">
+				<div class="add__container">
 					<mat-form-field>
-						<textarea matInput class="title" placeholder="Заголовок" #newsTitle required></textarea>
+						<textarea matInput class="title" placeholder="Заголовок" #eventTitle required></textarea>
 					</mat-form-field>
 					<mat-form-field class="preview-wrapper">
-						<textarea matInput placeholder="Превью" #newsPreview required></textarea>
+						<textarea matInput placeholder="Превью" #eventPreview required></textarea>
 					</mat-form-field>
 					<div class="newsText">
-						<h5>Текст новости</h5>
-						<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #newsText></textarea>
+						<h5>Текст мероприятия</h5>
+						<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #eventText required></textarea>
 					</div>
 					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
 					<p *ngFor="let alert of alerts" class="alert-wrapper">

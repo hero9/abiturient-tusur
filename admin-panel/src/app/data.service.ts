@@ -7,8 +7,14 @@ import 'rxjs/add/operator/map';
 export class DataService {
 
 	result: any;
+	page: string;
+	editNewsID: any;
+	editEventID: any;
+	editPageID: any;
 
-	constructor(private _http: Http) { }
+	constructor( private _http: Http ) { }
+
+	
 
 	saveNews(id, title, newsPreview, newsText) {
     const obj = {

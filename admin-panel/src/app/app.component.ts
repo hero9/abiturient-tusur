@@ -12,9 +12,6 @@ export class AppComponent implements OnInit {
 	title = 'Admin Panel';
 	menuItems: MenuItem[];
 	options: FormGroup;
-	menu : any;
-	page: string;
-
 
 	constructor(fb: FormBuilder, private http: HttpClient) {
 		
@@ -30,19 +27,11 @@ export class AppComponent implements OnInit {
 			{ name: "Новости", route: "/news" },
 			{ name: "Мероприятия", route: "/events" },
 			{ name: "Настройки", route: "/settings" },
-			{ name: "Добавить разделы", route: "/add-page" }
+			{ name: "Страницы", route: "/page" }
 		];
 	}
 
-	getPage(title) {
-		this.page = title;
-	}
-
-	ngOnInit() {
-		this.http.get('/api/menu').subscribe(data => {
-			this.menu = data;
-		});
-	}
+	ngOnInit() { }
 
 }
 

@@ -41,12 +41,12 @@ body {
 .cdk-focused {
 	background-color: #fff;
 }
-.news-container, .event-container {
+.add__container {
   display: flex;
   flex-direction: column;
 }
 
-.news-container, .event-container > * {
+.add-form__wrapper > * {
   width: 100%;
 }
 
@@ -105,7 +105,7 @@ body {
 	height: 20px;
 }
 
-.card-item + .card-item {
+.card-item {
 	margin-top: 15px;
 }
 
@@ -113,4 +113,12 @@ body {
 	position: fixed !important;
 	bottom: 40px;
 	right: 40px;
+}
+
+.add-form__wrapper {
+	margin-top: 20px;
+}
+
+.edit_icon {
+	float: right;
 }

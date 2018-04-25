@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { DataService } from "../data.service";
+import { DataService } from "../../data.service";
 import { froalaEditor } from "froala-editor";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-events',
@@ -13,18 +14,25 @@ export class AddEventsComponent implements OnInit {
   public showAlert: Boolean = false;
 	events: any;
 
-	constructor(private http: HttpClient, private dataservice: DataService) { 
+	constructor(
+		private http: HttpClient, 
+		private dataservice: DataService,
+		private router: Router
+	) { 
 		this.alerts.push({
       id: 1,
       type: "success",
-      message: "Ваше мероприятие добавлено!"
+      message: "Мероприятие добавлено! Вы будете перенаправлены на страницу мероприятий..."
 		});
 	}
 	
 	saveEvent(eventTitle, eventPreview, eventText) {
     this.dataservice.saveEvent(eventTitle, eventPreview, eventText);
     this.http.get("/api/events").subscribe(data => {
-      this.events = data;
+			this.events = data;
+			setTimeout(() => {
+				this.router.navigate(['/events']);
+			}, 3000);
     });
 	}
 	

@@ -10,20 +10,15 @@
 		<mat-sidenav-content>
 			<mat-nav-list>
 				<span class="avatar">
-					<img src="../assets/images/hero.jpg" alt="Your photo">
+					<img src="../assets/images/avatar-tusur.png" alt="Your photo">
 				</span>
-				<a class="user-name">Админ</a>
+				<a class="user-name">Админ ТУСУР</a>
 				<mat-divider></mat-divider>
 				<a mat-list-item [routerLink]="menuItem.route" *ngFor="let menuItem of menuItems"> {{ menuItem.name }} <mat-divider></mat-divider></a>
-
-				<!-- Output list of menu items --> 
-				<a mat-list-item *ngFor="let item of menu" (click)="getPage(item.id)">{{ item.title }}</a>
 			</mat-nav-list>	
 		</mat-sidenav-content>
 	</mat-sidenav-container>
-  
-</ng-container>
-<router-outlet></router-outlet>
 
-<!-- Output of menu items' content --> 
-<div style="color:red;"><app-page [page]="page"></app-page></div>
+</ng-container>
+
+<router-outlet></router-outlet>
