@@ -6,7 +6,7 @@ import * as $ from 'jquery';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +37,8 @@ import { PageContentComponent } from './page/page-content/page-content.component
 import { EditNewsComponent } from './news/edit-news/edit-news.component';
 import { EditEventComponent } from './events/edit-event/edit-event.component';
 import { EditPageComponent } from './page/edit-page/edit-page.component';
+import { AuthComponent } from './auth/auth.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -52,27 +57,29 @@ import { EditPageComponent } from './page/edit-page/edit-page.component';
 		PageContentComponent,
 		EditNewsComponent,
 		EditEventComponent,
-		EditPageComponent
+		EditPageComponent,
+		AuthComponent
   ],
   imports: [
     BrowserModule,
 		AppRoutingModule,
 		RouterModule.forRoot([
 			{ path: '', redirectTo: 'stats', pathMatch: 'full' },
-			{ path: 'stats', component: StatsComponent },
-			{ path: 'apps', component: AppsComponent },
-			{ path: 'add-news', component: AddNewsComponent },
-			{ path: 'settings', component: SettingsComponent },
-			{ path: 'enrollee-list', component: EnrolleeListComponent },
-			{ path: 'page', component: PageComponent },
-			{ path: 'news', component: NewsComponent },
-			{ path: 'events', component: EventsComponent },
-			{ path: 'add-events', component: AddEventsComponent },
-			{ path: 'add-page', component: AddPageComponent },
-			{ path: 'page-content', component: PageContentComponent },
-			{ path: 'edit-news', component: EditNewsComponent },
-			{ path: 'edit-event', component: EditEventComponent },
-			{ path: 'edit-page', component: EditPageComponent },
+			{ path: 'stats', component: StatsComponent, canActivate: [AuthGuard] },
+			{ path: 'apps', component: AppsComponent, canActivate: [AuthGuard] },
+			{ path: 'add-news', component: AddNewsComponent, canActivate: [AuthGuard] },
+			{ path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+			{ path: 'enrollee-list', component: EnrolleeListComponent, canActivate: [AuthGuard] },
+			{ path: 'page', component: PageComponent, canActivate: [AuthGuard] },
+			{ path: 'news', component: NewsComponent, canActivate: [AuthGuard] },
+			{ path: 'events', component: EventsComponent, canActivate: [AuthGuard] },
+			{ path: 'add-events', component: AddEventsComponent, canActivate: [AuthGuard] },
+			{ path: 'add-page', component: AddPageComponent, canActivate: [AuthGuard] },
+			{ path: 'page-content', component: PageContentComponent, canActivate: [AuthGuard] },
+			{ path: 'edit-news', component: EditNewsComponent, canActivate: [AuthGuard] },
+			{ path: 'edit-event', component: EditEventComponent, canActivate: [AuthGuard] },
+			{ path: 'edit-page', component: EditPageComponent, canActivate: [AuthGuard] },
+			{ path: 'auth', component: AuthComponent },
 
 		]),
 		BrowserAnimationsModule,
@@ -84,8 +91,27 @@ import { EditPageComponent } from './page/edit-page/edit-page.component';
 		ReactiveFormsModule,
 		FroalaEditorModule.forRoot(),
 		FroalaViewModule.forRoot(),
+		JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('jwtToken');
+        },
+        whitelistedDomains: ['localhost:3000']
+      }
+    }),
   ],
-providers: [FormBuilder, DataService, DatePipe],
-bootstrap: [AppComponent]
+	providers: [
+		FormBuilder, 
+		DataService, 
+		DatePipe, 
+		AuthGuard, 
+		AuthService,
+		{
+			provide: HTTP_INTERCEPTORS,
+   		useClass: AuthInterceptor,
+   		multi: true
+		}
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

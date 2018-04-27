@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
 	menuItems: MenuItem[];
 	options: FormGroup;
 
-	constructor(fb: FormBuilder, private http: HttpClient) {
+	constructor(fb: FormBuilder, private http: HttpClient, private _router: Router) {
 		
 		this.options = fb.group({
       'fixed': false,
@@ -32,6 +33,11 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() { }
+
+	logout() {
+		localStorage.removeItem("jwtToken");
+		this._router.navigate(['stats']);
+	}
 
 }
 

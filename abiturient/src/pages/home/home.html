@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -6,13 +6,15 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-
+ -->
 <ion-content>
-  <ion-list inset>
-		<ion-item *ngFor="let item of news">
-			<h2>{{ item.title }}</h2>
-			<p><b>{{ item.newsPreview }}</b></p>
-			<p class="e2e-inner-html-bound" [innerHTML]="item.newsText"></p>
-		</ion-item>
-	</ion-list>
+	<h2>Welcome to my Diploma project</h2>
+		<button block ion-button (click)="login()">Войти</button>
+		<button block ion-button>Регистрация</button>
 </ion-content>
+
+<!-- <ion-item *ngFor="let item of news">
+		<h2>{{ item.title }}</h2>
+		<p><b>{{ item.newsPreview }}</b></p>
+		<p class="e2e-inner-html-bound" [innerHTML]="item.newsText"></p>
+	</ion-item> -->

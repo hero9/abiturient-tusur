@@ -1,29 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-/*
-  Generated class for the RestProvider provider.
+import 'rxjs/add/operator/map';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class RestProvider {
 
-  constructor(public http: HttpClient) {
+	result: any;
+
+  constructor(public http: Http ) {
     console.log('Hello RestProvider Provider');
 	}
 	
 	getNews() {
-		return new Promise( resolve => {
-			this.http.get('api/news')
-			.subscribe( data => {
-				resolve(data);
-			}, err => {
-				console.log(err);
-			});
-		});
+		return this.http.get("http://localhost:3000/api/news")
+			.map(result => this.result = result.json().data);
 	}
-
-
-
 }

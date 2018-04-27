@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../data.service";
 import { froalaEditor } from "froala-editor";
 import { HttpClient } from "@angular/common/http";
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
 declare let $: any;
 
 @Component({
@@ -15,6 +15,12 @@ export class EditNewsComponent implements OnInit {
   public alerts: Array<IAlert> = [];
 	public showAlert: Boolean = false;
 	editorContent : any;
+	flagForm: FormGroup;
+
+	isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+		const isSubmitted = form && form.submitted;
+		return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+	}
 
   constructor(private _http: HttpClient, private _data: DataService) {
     this.alerts.push({
@@ -43,9 +49,8 @@ export class EditNewsComponent implements OnInit {
     this._http.get(`/api/news/${this._data.editNewsID}`).subscribe(data => {
 			this.editNews = data;
 			this.editorContent = this.editNews.newsText;
-		});
-		
-  }
+		});		
+	}
 
   updateNews(title, newsPreview, newsText) {
     this._http

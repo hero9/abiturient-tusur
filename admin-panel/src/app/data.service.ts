@@ -12,9 +12,7 @@ export class DataService {
 	editEventID: any;
 	editPageID: any;
 
-	constructor( private _http: Http ) { }
-
-	
+	constructor( private _http: Http, private http: HttpClient ) { }
 
 	saveNews(id, title, newsPreview, newsText) {
     const obj = {
@@ -23,7 +21,7 @@ export class DataService {
 			newsPreview : newsPreview,
 			newsText: newsText
     };
-    this._http.post("/api/news", obj)
+    this.http.post("/api/news", obj)
         .subscribe(res => console.log("done"));
 	}
 
@@ -33,7 +31,7 @@ export class DataService {
 			title: title,
 			content: content
     };
-    this._http.post("/api/pages", obj)
+    this.http.post("/api/pages", obj)
         .subscribe(res => console.log("done"));
 	}
 	
@@ -43,7 +41,7 @@ export class DataService {
 			eventPreview : eventPreview,
 			eventText: eventText
     };
-    this._http.post("/api/events", obj)
+    this.http.post("/api/events", obj)
         .subscribe(res => console.log("done"));
   }
 	

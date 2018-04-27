@@ -4,15 +4,24 @@ const path = require('path');
 const http = require('http');
 const logger = require('morgan');
 
+
 const app = express();
 
 const api = require('./routes/api');
+
+app.use( (req, res, next) => {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+	next();
+});
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../admin-panel/dist')));
 app.use('/api', api);
+
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../admin-panel/dist/index.html'));

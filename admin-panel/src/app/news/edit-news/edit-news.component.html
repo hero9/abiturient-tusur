@@ -2,19 +2,18 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col">
-			<form class="add-form__wrapper" (ngSubmit)="updateNews(newsTitle.value, newsPreview.value, editorContent)" #newsForm="ngForm">
+			<form class="add-form__wrapper" (ngSubmit)="updateNews(newsTitle.value, newsPreview.value, editorContent)" name="newsForm" #newsForm="ngForm">
 				<div class="add__container">
 					<mat-form-field>
-						<textarea matInput class="title" placeholder="Заголовок" [value]="editNews?.title" #newsTitle required></textarea>
-					</mat-form-field>
-					<mat-form-field class="preview-wrapper">
+						<input matInput class="title" placeholder="Заголовок" [value]="editNews?.title" #newsTitle required>
+
 						<textarea matInput placeholder="Превью" [value]="editNews?.newsPreview" #newsPreview required></textarea>
 					</mat-form-field>
 					<div class="newsText">
 						<h5>Текст новости</h5>
 						<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #newsText></textarea>
 					</div>
-					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
+					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.valid" id="submit">Опубликовать</button>
 					<p *ngFor="let alert of alerts" class="alert-wrapper">
 						<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
 					</p>
