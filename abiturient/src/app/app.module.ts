@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
-/* import { JwtHelperService, JwtModule } from '@auth0/angular-jwt'; */
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { AuthServiceProvider } from '../providers/auth/auth-service';
+import { AuthInterceptor } from '../providers/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,14 @@ import { AuthServiceProvider } from '../providers/auth/auth-service';
 		HttpClientModule,
 		HttpModule,
 		IonicModule.forRoot(MyApp),
+		JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('jwtToken');
+        },
+        whitelistedDomains: ['localhost:3000']
+      }
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,8 +48,13 @@ import { AuthServiceProvider } from '../providers/auth/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider,
-    AuthServiceProvider
+		RestProvider,
+		AuthServiceProvider,
+		{
+			provide: HTTP_INTERCEPTORS,
+   		useClass: AuthInterceptor,
+   		multi: true
+		}
   ]
 })
 export class AppModule {}

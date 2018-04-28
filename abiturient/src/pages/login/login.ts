@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { ListPage } from '../list/list';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -37,6 +38,11 @@ export class LoginPage {
 		}, err => {
 			this.message = err.error.msg;
 		});
+	}
+
+	logout() {
+		localStorage.removeItem("jwtToken");
+		this.navCtrl.push( HomePage );
 	}
 
 }

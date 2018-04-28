@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { AuthServiceProvider } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -8,9 +10,22 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+	items: Array<{title: string, note: string, icon: string}>;
+	
+	ionViewCanEnter(): boolean {
+    if (!this.auth.isAuthenticated()) {
+			localStorage.removeItem('token');
+			this.navCtrl.push( LoginPage );
+      return false;
+    }
+    return true;
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+		public navCtrl: NavController, 
+		public navParams: NavParams,
+		public auth: AuthServiceProvider,
+	) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
