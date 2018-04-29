@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../admin-panel/dist/index.html'));
 });
 
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '8080';
 app.set('port', port);
 
 const server = http.createServer(app);

@@ -7,9 +7,11 @@ const Events = require("../models/events.js");
 const MenuItems = require("../models/menuItems.js");
 const Pages = require("../models/pages.js");
 const Users = require("../models/users.js");
+const Quizes = require("../models/quizes.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkAuth = require('../middleware/check-auth');
+const Scores = require('../models/scores');
 
 mongoose.connect("mongodb://localhost:27017/tusur");
 db = mongoose.connection;
@@ -85,11 +87,15 @@ router.post("/signup", (req, res) => {
             const user = new Users({
               _id: new mongoose.Types.ObjectId(),
               email: req.body.email,
-              password: hash
-            });
+							password: hash
+						});
             user
               .save()
               .then(result => {
+								Scores.create( {userId: result._id, quizScore: 0}, (err, res) => {
+									if(err) return next(err);
+									console.log("quiiiiiizzzz");
+								});
                 console.log(result);
                 res.status(200).json({
                   success: "New user has been created"
@@ -120,7 +126,8 @@ router.post("/signin", (req, res) => {
           const JWTToken = jwt.sign(
             {
               email: user.email,
-              _id: user._id
+							_id: user._id,
+							quizScore: user.quizScore
             },
             "secret",
             {
@@ -144,7 +151,46 @@ router.post("/signin", (req, res) => {
     });
 });
 
+router.post("/quiz", /* checkAuth, */ (req, res, next) => {
+  Quizes.create(
+    {
+			question: req.body.question,
+			options: req.body.options,
+			cost: req.body.cost
+    },
+    (err, post) => {
+      if (err) return next(err);
+      res.json(post);
+    }
+  );
+});
+
+router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
+	Quizes.find({"options._id": req.params.id}, (err, question) => {
+		question[0].options.forEach( (option) => {
+			if(req.params.id == option._id) {
+				if(option.isCorrect) {
+					Scores.findOne({userId: req.userData._id}, (err, res) => {
+						Scores.update({ userId : req.userData._id }, { quizScore : res.quizScore + question[0].cost },
+							(err, res) => {
+								if (err) return next(err);
+						});
+					});
+				}
+			}
+		});
+		res.json(question);
+	});
+});
+
 /* =======  GET Requests ======== */
+router.get("/quiz",/*  checkAuth, */ (req, res, next) => {
+  Quizes.find((err, questions) => {
+		if (err) return next(err);
+		res.json(questions);
+  });
+});
+
 router.get("/students", checkAuth, (req, res) => {
   db
     .collection("students")

@@ -96,7 +96,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
         tokenGetter: () => {
           return localStorage.getItem('jwtToken');
         },
-        whitelistedDomains: ['localhost:3000']
+        whitelistedDomains: ['localhost:8080']
       }
     }),
   ],

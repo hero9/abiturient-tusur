@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';/* 
-import { RestProvider } from '../../providers/rest/rest'; */
+import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -11,11 +10,8 @@ export class HomePage {
 
 	news: any;
 
-  constructor(public navCtrl: NavController/* , public restProvider: RestProvider */) {
-		/* this.restProvider.getNews()
-			.subscribe(res => 
-				this.news = res
-			); */
+  constructor(public navCtrl: NavController) {
+		
 	}
 	login() {
 		this.navCtrl.push(LoginPage);
