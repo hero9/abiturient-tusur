@@ -5,17 +5,18 @@ import { AuthServiceProvider } from '../../providers/auth/auth-service';
 @IonicPage()
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
+	templateUrl: 'register.html',
 })
 export class RegisterPage {
 	
 	createSuccess = false;
-  registerCredentials = { name: '', email: '', password: '', confirmation_password: '' };
+	registerCredentials = { name: '', email: '', password: '', confirmation_password: '' };
+	public registerForm: any;
 
   constructor(
     private nav: NavController,
     private auth: AuthServiceProvider,
-    private alertCtrl: AlertController
+		private alertCtrl: AlertController
   ) {}
 
   public register() {

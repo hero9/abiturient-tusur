@@ -41,6 +41,7 @@ import { AuthComponent } from './auth/auth.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { QuizComponent } from './show-quiz/quiz/quiz.component';
 import { ShowQuizComponent } from './show-quiz/show-quiz.component';
+import { FroalaComponent } from './froala/froala.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ShowQuizComponent } from './show-quiz/show-quiz.component';
 		EditPageComponent,
 		AuthComponent,
 		QuizComponent,
-		ShowQuizComponent
+		ShowQuizComponent,
+		FroalaComponent
   ],
   imports: [
     BrowserModule,
@@ -83,8 +85,8 @@ import { ShowQuizComponent } from './show-quiz/show-quiz.component';
 			{ path: 'edit-news', component: EditNewsComponent, canActivate: [AuthGuard] },
 			{ path: 'edit-event', component: EditEventComponent, canActivate: [AuthGuard] },
 			{ path: 'edit-page', component: EditPageComponent, canActivate: [AuthGuard] },
-			{ path: 'quiz', component: QuizComponent/* , canActivate: [AuthGuard] */ },
-			{ path: 'show-quiz', component: ShowQuizComponent/*, canActivate: [AuthGuard] */},
+			{ path: 'quiz', component: QuizComponent, canActivate: [AuthGuard] },
+			{ path: 'show-quiz', component: ShowQuizComponent, canActivate: [AuthGuard]},
 			{ path: 'auth', component: AuthComponent },
 
 		]),

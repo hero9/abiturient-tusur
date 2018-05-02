@@ -1,18 +1,43 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Меню</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title>Меню</ion-title>
+		</ion-toolbar>
+	</ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+	<ion-content no-bounce>
+		<ion-grid>
+			<ion-row class="sidebar_person">
+				<ion-col col-1></ion-col>
+				<ion-col col-10>
+					<div class="sidebar_avatar">
+						<img src="../assets/imgs/avatar.png">
+					</div>
+					<b>Константин Константинопольский</b>
+					<br />
+					<small>Поступающий на бакалавриат</small>
+				</ion-col>
+				<ion-col col-1></ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-list>
+			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [class.activeHighlight]="checkActive(p)" detail-none>
+				<ion-icon class="menu-items__icon" item-left [name]="p.icon"></ion-icon>
+				{{p.title}}
 			</button>
-			<button menuClose ion-item (click)="logout()">Выйти</button>
-    </ion-list>
-  </ion-content>
+			<button menuClose ion-item (click)="logout()" detail-none>
+				<ion-icon item-left class="logout" name="appname-logout"></ion-icon>
+				Выйти
+			</button>
+		</ion-list>
+	</ion-content>
+
+	<ion-footer>
+		<ion-toolbar position="bottom">
+			<ion-col offset-3></ion-col>
+			<img src="../assets/imgs/sidebar-logo.png">
+		</ion-toolbar>
+	</ion-footer>
 
 </ion-menu>
 

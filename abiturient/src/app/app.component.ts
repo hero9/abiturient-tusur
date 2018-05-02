@@ -15,8 +15,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 	rootPage: any = NewsPage;
+	activePage: any;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
   constructor(
 		public platform: Platform, 
@@ -26,9 +27,11 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-			{ title: 'Новости', component: NewsPage },
-			{ title: 'Викторина', component: QuizPage },
-    ];
+			{ title: 'Новости', component: NewsPage, icon: 'appname-person' },
+			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' },
+		];
+		
+		this.activePage = this.pages[0]; 
 
   }
 
@@ -40,11 +43,18 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.nav.setRoot(page.component);
+		this.nav.setRoot(page.component);
+		this.activePage = page;
 	}
 	
 	logout(){
 		localStorage.removeItem("jwtToken");
 		this.nav.setRoot( HomePage );
 	}
+
+	public checkActive(page): boolean {
+		return page === this.activePage;
+	}
+
+
 }

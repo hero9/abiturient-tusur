@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require('path');
+const upload_image = require("../froala/image_upload.js");
+const bcrypt = require("bcrypt");
+
 const Student = require("../models/students.js");
 const News = require("../models/news.js");
 const Events = require("../models/events.js");
@@ -8,10 +13,10 @@ const MenuItems = require("../models/menuItems.js");
 const Pages = require("../models/pages.js");
 const Users = require("../models/users.js");
 const Quizes = require("../models/quizes.js");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkAuth = require('../middleware/check-auth');
 const Scores = require('../models/scores');
+
 
 mongoose.connect("mongodb://localhost:27017/tusur");
 db = mongoose.connection;
@@ -27,6 +32,34 @@ let response = {
   data: [],
   message: null
 };
+
+// Image
+router.post("/image_upload", (req, res) => {
+  upload_image(req, function(err, data) {
+ 
+    if (err) {
+			console.log("errrr", err);
+			return res.status(404).end(JSON.stringify(err));
+    }
+ 
+    res.send(data);
+  });
+});
+
+router.get("/:foldername/:childfoldername/:filename", function(req, res) {
+	const foldername = req.params.foldername;
+	const childFoldername = req.params.childfoldername;
+	const fileName = req.params.filename;
+	const rootPath = path.resolve(`../server/`);
+	res.download(`${rootPath}/${foldername}/${childFoldername}/${fileName}`);
+});
+ 
+ 
+// Create folder for uploading files.
+var filesDir = path.join(path.dirname(require.main.filename), "froala/uploads");
+if (!fs.existsSync(filesDir)){
+  fs.mkdirSync(filesDir);
+}
 
 /* =======  POST Requests ======== */
 router.post("/news", checkAuth, (req, res, next) => {
@@ -150,17 +183,14 @@ router.post("/signin", (req, res) => {
 });
 
 router.post("/quiz", checkAuth, (req, res, next) => {
-  Quizes.create(
-    {
-			question: req.body.question,
-			options: req.body.options,
-			cost: req.body.cost
-    },
-    (err, post) => {
-      if (err) return next(err);
-      res.json(post);
-    }
-  );
+  Quizes.create({
+		question: req.body.question,
+		options: req.body.options,
+		cost: req.body.cost
+	},(err, post) => {
+		if (err) return next(err);
+		res.json(post);
+	});
 });
 
 router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
@@ -178,6 +208,15 @@ router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
 			}
 		});
 		res.json(question);
+	});
+});
+
+router.post('/froala-news', checkAuth, (req, res, next) => {
+	FroalaImages.create({
+		url: req.body.url
+	}, (err, post) => {
+		if (err) return next(err);
+		res.json(post);
 	});
 });
 

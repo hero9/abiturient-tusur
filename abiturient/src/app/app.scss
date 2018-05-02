@@ -1,15 +1,65 @@
-// http://ionicframework.com/docs/theming/
+ion-icon {
+  &[class*="appname-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: #0059ae;
+    width: 1em;
+    height: 1em;
+  }
+  &[class*="appname-person"] {
+    mask-image: url(../assets/imgs/icon-person.svg);
+  }
+  &[class*="appname-list"] {
+    mask-image: url(../assets/imgs/icon-list.svg);
+  }
+  &[class*="appname-study"] {
+    mask-image: url(../assets/imgs/icon-study.svg);
+  }
+  &[class*="appname-quiz"] {
+    mask-image: url(../assets/imgs/icon-quiz.svg);
+  }
+  &[class*="appname-calc"] {
+    mask-image: url(../assets/imgs/icon-calc.svg);
+	}
+	&[class*="appname-logout"] {
+		mask-image: url(../assets/imgs/logout.svg)
+	}
+}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.scroll-content {
+	overflow: hidden !important;
+}
+
+.sidebar_person {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar_person img {
+  transform: translateY(5px);
+}
+
+.sidebar_person b {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.sidebar_person small {
+  color: #005aae;
+  font-size: 14px;
+}
+
+.sidebar_avatar {
+  background-image: url(../assets/imgs/avatar-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 82px;
+}
+
+.activeHighlight {
+	background-image: url(../assets/imgs/menu_list-rectangle.png);
+	background-repeat: no-repeat;
+}

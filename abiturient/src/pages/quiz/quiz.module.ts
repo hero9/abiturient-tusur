@@ -7,7 +7,7 @@ import { QuizPage } from './quiz';
     QuizPage,
   ],
   imports: [
-    IonicPageModule.forChild(QuizPage),
+		IonicPageModule.forChild(QuizPage),
   ],
 })
 export class QuizPageModule {}

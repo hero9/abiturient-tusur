@@ -17,16 +17,21 @@
 					</ion-item>
 
 					<ion-item>
-						<ion-input type="email" email placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+						<ion-input type="email" placeholder="Email" #email name="email" 
+							pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" 
+							[(ngModel)]="registerCredentials.email" required>
+						</ion-input>
 					</ion-item>
 
 					<ion-item>
-						<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+						<ion-input type="password" placeholder="Password" name="password" 
+							[(ngModel)]="registerCredentials.password" required></ion-input>
 					</ion-item>
 
 					<ion-item>
-						<ion-input type="password" placeholder="Confirm Password" name="confirmation_password" [(ngModel)]="registerCredentials.confirmation_password"
-						 required></ion-input>
+						<ion-input type="password" placeholder="Confirm Password" name="confirmation_password" 
+							[(ngModel)]="registerCredentials.confirmation_password" required>
+						</ion-input>
 					</ion-item>
 
 				</ion-list>
@@ -35,6 +40,7 @@
 
 		<ion-row>
 			<ion-col class="signup-col">
+				<label *ngIf="!registerForm.form.valid && email.value.$dirty">Введенные данные не верны</label>
 				<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
 			</ion-col>
 		</ion-row>
