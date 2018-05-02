@@ -2,11 +2,10 @@
 	
 	<mat-toolbar color="primary">
 		<span>Админ панель</span>
-		<button mat-button (click)="logout()">Выход</button>
+		<button mat-button class="exit_btn" *ngIf="isAuth" (click)="logout()">Выход</button>
 	</mat-toolbar>		
 
-	<mat-sidenav-container>
-		<mat-sidenav>Start</mat-sidenav>
+	<mat-sidenav-container *ngIf="isAuth">
 		<mat-sidenav-content>
 			<mat-nav-list>
 				<span class="avatar">

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
-import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
+import '../../assets/js/login-animation.js';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +14,10 @@ export class AuthComponent implements OnInit {
 	message = '';
 	data: any;
 
-	constructor(private _http: HttpClient, private _router: Router) { }
+	constructor(
+		private _http: HttpClient, 
+		private _router: Router, 
+	) {	}
 	
 	login(email, password) {
 		this._http.post('/api/signin',{ email : email, password : password })
@@ -28,6 +29,10 @@ export class AuthComponent implements OnInit {
 			this.message = err.error.msg;
 		});
 	}
+
+  ngAfterViewInit() {
+    (window as any).initialize();
+  }
 
   ngOnInit() {
   }

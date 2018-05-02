@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { HomePage } from '../home/home';
+import { AuthServiceProvider } from './../../providers/auth/auth-service';
 
 @IonicPage()
 @Component({
@@ -12,10 +14,18 @@ export class QuizPage {
 	quiz: Array<object>;
 	quizes: {};
 
+	ionViewCanEnter() {
+    if (!this.auth.isAuthenticated()) {
+			localStorage.removeItem('token');
+			this.navCtrl.push( HomePage );
+    }
+  }
+
   constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
-		private _http: HttpClient
+		private _http: HttpClient,
+		public auth: AuthServiceProvider,
 	) { }
 
   ionViewDidLoad() {

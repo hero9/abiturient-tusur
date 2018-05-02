@@ -8,30 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-
-	<!-- <form ngSubmit="saveQuiz()">
-		<ion-list>
-			<ion-item>
-				<ion-label floating>Вопрос</ion-label>
-				<ion-input type="text" [(ngModel)]="quiz.title" name="title"></ion-input>
-			</ion-item>
-		</ion-list>
-		<ion-list>
-			<ion-item>
-				<ion-label floating>Ответ 1</ion-label>
-				<ion-input type="text" [(ngModel)]="quiz.ques1" name="ques1"></ion-input>
-			</ion-item>
-			<ion-item>
-				<ion-label floating>Ответ 2</ion-label>
-				<ion-input type="text" [(ngModel)]="quiz.ques2" name="ques2"></ion-input>
-			</ion-item>
-			<ion-item>
-				<ion-label floating>Ответ 3</ion-label>
-				<ion-input type="text" [(ngModel)]="quiz.ques3" name="ques3"></ion-input>
-			</ion-item>
-		</ion-list>
-		<button ion-button type="submit" block>Опубликовать</button>
-	</form> -->
 	<div *ngFor="let item of quizes">
 		<p> {{ item.question }} </p>
 		<ion-item-group>
@@ -42,5 +18,4 @@
 			<small>Количество баллов за вопрос {{ item.cost }}</small>
 		</ion-item-group>
 	</div>
-
 </ion-content>

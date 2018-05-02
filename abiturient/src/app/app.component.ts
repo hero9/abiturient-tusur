@@ -3,30 +3,31 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
 import { NewsPage } from '../pages/news/news';
 import { QuizPage } from '../pages/quiz/quiz';
+import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+	rootPage: any = NewsPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+		public platform: Platform, 
+		public statusBar: StatusBar, 
+		public splashScreen: SplashScreen,
+	) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-			{ title: 'News', component: NewsPage },
-			{ title: 'Login', component: LoginPage },
-			{ title: 'Quiz', component: QuizPage }
+			{ title: 'Новости', component: NewsPage },
+			{ title: 'Викторина', component: QuizPage },
     ];
 
   }
@@ -40,5 +41,10 @@ export class MyApp {
 
   openPage(page) {
     this.nav.setRoot(page.component);
-  }
+	}
+	
+	logout(){
+		localStorage.removeItem("jwtToken");
+		this.nav.setRoot( HomePage );
+	}
 }

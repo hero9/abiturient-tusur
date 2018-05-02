@@ -8,8 +8,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewsPage } from '../pages/news/news';
-import { LoginPage } from '../pages/login/login';
 import { QuizPage } from '../pages/quiz/quiz';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,8 +22,9 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
     MyApp,
     HomePage,
 		NewsPage,
+		QuizPage,
 		LoginPage,
-		QuizPage
+		RegisterPage
   ],
   imports: [
 		BrowserModule,
@@ -44,14 +46,15 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
     MyApp,
     HomePage,
 		NewsPage,
+		QuizPage,
 		LoginPage,
-		QuizPage
+		RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-		AuthServiceProvider,
+		AuthServiceProvider
   ]
 })
 export class AppModule {}

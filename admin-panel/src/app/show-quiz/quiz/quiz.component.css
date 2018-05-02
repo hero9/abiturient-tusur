@@ -1,0 +1,55 @@
+.title {
+	width: 80%;
+	text-align: center;
+	font-family: Arial;
+	color: #3f51b5;
+}
+
+form {
+	margin-top: 50px;
+}
+
+.question_wrapper {
+	width: 80%;
+	text-align: center;
+}
+
+.quiz_textarea {
+	height: 20px;
+}
+
+.matFormField {
+	width: 80%;
+}
+
+.matFormField_cost {
+		width: 200px;
+}
+
+.matFormField .answer_input {
+	width: 90%;
+}
+
+.add_answer {
+	color: #3f51b5;
+    margin-bottom: 23px;
+    cursor: pointer;
+}
+
+button.btn {
+	background: #3f51b5;
+	width: 20%;
+}
+
+.answer_wrapper {
+	margin-left: 32px;
+	width: 92%;
+}
+
+.isCorrect {
+	margin-bottom: 9px;
+}
+
+.answer_list {
+	margin-left: 67px;
+}

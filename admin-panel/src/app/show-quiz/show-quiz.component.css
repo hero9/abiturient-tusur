@@ -1,0 +1,25 @@
+.question_card {
+  margin-top: 40px;
+}
+
+.question_title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: -10px;
+}
+
+.question_weight {
+	font-size: 15px;
+	margin: 13px 0 0 8px;
+}
+
+.quiz_answer {
+  height: 30px;
+  margin-top: 10px;
+}
+
+.answer_true {
+  color: green;
+  margin-top: -5px;
+  margin-left: 20px;
+}

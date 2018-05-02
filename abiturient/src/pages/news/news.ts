@@ -1,4 +1,4 @@
-import { LoginPage } from './../login/login';
+import { HomePage } from './../home/home';
 import { AuthServiceProvider } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -11,14 +11,12 @@ import { HttpClient } from "@angular/common/http";
 export class NewsPage {
 	
 	news : {};
-	
-	ionViewCanEnter(): boolean {
+
+	ionViewCanEnter() {
     if (!this.auth.isAuthenticated()) {
 			localStorage.removeItem('token');
-			this.navCtrl.push( LoginPage );
-      return false;
+			this.navCtrl.push( HomePage );
     }
-    return true;
   }
 
   constructor(
@@ -31,6 +29,5 @@ export class NewsPage {
       this.news = data;
 		});
 	}
-
   
 }

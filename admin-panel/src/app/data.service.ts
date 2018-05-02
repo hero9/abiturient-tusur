@@ -25,6 +25,16 @@ export class DataService {
         .subscribe(res => console.log("done"));
 	}
 
+	saveQuestion(question, options, cost){
+		const obj = {
+			question: question,
+			options: options,
+			cost: cost
+		};
+		this.http.post("/api/quiz", obj)
+			.subscribe(res => console.log("question done"));
+	}
+
 	savePages(id, title, content) {
     const obj = {
 			id: id,

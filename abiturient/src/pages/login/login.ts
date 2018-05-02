@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthServiceProvider } from '../../providers/auth/auth-service';
-import { QuizPage } from '../quiz/quiz';
 
 @IonicPage()
 @Component({
@@ -33,7 +32,7 @@ export class LoginPage {
 		.subscribe(res => {
 			this.data = res;
 			localStorage.setItem('jwtToken', this.data.token);
-			this.navCtrl.push( QuizPage );
+			this.navCtrl.setRoot( NewsPage );
 		}, err => {
 			this.message = err.error.msg;
 		});

@@ -4,7 +4,6 @@ const QuizesSchema = new mongoose.Schema({
 	question: String,
 	options: [
 		{
-			id: String,
 			text: String,
 			isCorrect: Boolean
 		}

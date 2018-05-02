@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col">
+			<h3 class="title">Вопросы для викторины</h3>
+			<form>
+				<div class="question_wrapper">
+
+					<mat-form-field class="matFormField">
+						<textarea class="quiz_textarea" matInput name="question" #question placeholder="Введите вопрос..." matTextareaAutosize
+						 matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+					</mat-form-field>
+
+					<mat-form-field class="matFormField">
+						<textarea class="quiz_textarea" matInput placeholder="Стоимость" name="cost" #cost matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+					</mat-form-field>
+
+					<mat-list class=" answer_list matFormField" role="list">
+						<mat-list-item role="listitem" *ngFor="let opt of options"> {{ opt.text }} </mat-list-item>
+					</mat-list>
+
+					<div class="answer_wrapper">
+						<mat-form-field class="matFormField">
+							<textarea class="quiz_textarea answer_input" matInput placeholder="Favorite food" name="option" #option matTextareaAutosize matAutosizeMinRows="1"
+							 matAutosizeMaxRows="5"></textarea>
+						</mat-form-field>
+						<mat-checkbox class="isCorrect" *ngIf="!hideCheckbox" name="isCorrect" [(ngModel)]="isCorrect"></mat-checkbox>
+						<i class="material-icons add_answer" (click)="addOption(option.value)">add_circle</i>
+					</div>
+
+					<button class="btn" (click)="saveQuestion(question.value, cost.value)">Далее</button>
+
+				</div>
+			</form>
+		</div>
+	</div>

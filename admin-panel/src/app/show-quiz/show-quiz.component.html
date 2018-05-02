@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col">
+			<h3 class="title">Вопросы для викторины</h3>
+			<mat-card *ngFor="let item of quizes" class="question_card">
+				<mat-card-header>
+					<mat-card-title class="question_title"> {{ item.question }} </mat-card-title>
+				</mat-card-header>
+				<p class="question_weight">Стоимость этого вопроса: {{ item.cost }} баллов</p>
+				<mat-list *ngFor="let option of item.options">
+					<mat-list-item class="quiz_answer"> {{ option.text }} <i class="material-icons answer_true" *ngIf="option.isCorrect">done</i></mat-list-item>
+				</mat-list>
+			</mat-card>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/quiz'">
+				<i class="material-icons">add</i>
+			</button>
+		</div>
+	</div>
+</div>

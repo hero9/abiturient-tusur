@@ -94,9 +94,7 @@ router.post("/signup", (req, res) => {
               .then(result => {
 								Scores.create( {userId: result._id, quizScore: 0}, (err, res) => {
 									if(err) return next(err);
-									console.log("quiiiiiizzzz");
 								});
-                console.log(result);
                 res.status(200).json({
                   success: "New user has been created"
                 });
@@ -151,7 +149,7 @@ router.post("/signin", (req, res) => {
     });
 });
 
-router.post("/quiz", /* checkAuth, */ (req, res, next) => {
+router.post("/quiz", checkAuth, (req, res, next) => {
   Quizes.create(
     {
 			question: req.body.question,
@@ -184,7 +182,7 @@ router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
 });
 
 /* =======  GET Requests ======== */
-router.get("/quiz",/*  checkAuth, */ (req, res, next) => {
+router.get("/quiz", checkAuth, (req, res, next) => {
   Quizes.find((err, questions) => {
 		if (err) return next(err);
 		res.json(questions);
