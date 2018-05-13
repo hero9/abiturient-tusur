@@ -86,7 +86,7 @@ import { FroalaComponent } from './froala/froala.component';
 			{ path: 'edit-event', component: EditEventComponent, canActivate: [AuthGuard] },
 			{ path: 'edit-page', component: EditPageComponent, canActivate: [AuthGuard] },
 			{ path: 'quiz', component: QuizComponent, canActivate: [AuthGuard] },
-			{ path: 'show-quiz', component: ShowQuizComponent, canActivate: [AuthGuard]},
+			{ path: 'show-quiz', component: ShowQuizComponent, canActivate: [AuthGuard] },
 			{ path: 'auth', component: AuthComponent },
 
 		]),

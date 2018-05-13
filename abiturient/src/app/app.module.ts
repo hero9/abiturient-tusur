@@ -11,6 +11,7 @@ import { NewsPage } from '../pages/news/news';
 import { QuizPage } from '../pages/quiz/quiz';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ShowNewsPage } from './../pages/news/show-news/show-news';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +25,8 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		NewsPage,
 		QuizPage,
 		LoginPage,
-		RegisterPage
+		RegisterPage,
+		ShowNewsPage
   ],
   imports: [
 		BrowserModule,
@@ -48,7 +50,8 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		NewsPage,
 		QuizPage,
 		LoginPage,
-		RegisterPage
+		RegisterPage,
+		ShowNewsPage
   ],
   providers: [
     StatusBar,

@@ -1,3 +1,16 @@
-page-list {
+* {
+	margin: 0;
+}
+.btn__card {
+	transform: translateX(150px);
+}
 
+.hidden_id {
+	display: none;
+}
+
+ion-content[scroll="true"] {
+  scroll-content {
+    overflow-y: hidden!important;
+  }
 }

@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Новости</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+	<ion-content class="show-content">
+		<ion-card>
+			<ion-card-content>
+				<ion-card-title>
+					{{ news?.title }}
+				</ion-card-title>
+				<p class="e2e-inner-html-bound" 
+				[innerHTML]="news?.newsText"></p>
+				<strong>{{ news?.publishedDate | date}}</strong>
+			</ion-card-content>
+		</ion-card>
+	</ion-content>

@@ -12,7 +12,12 @@ import * as hash from "hash-string";
 })
 export class AddNewsComponent implements OnInit {
 	
-  news: any;
+	news: any;
+	public froalaContent: string = '';
+
+	edtContent($event : string){
+		this.froalaContent = $event;
+	}
 
   public alerts: Array<IAlert> = [];
   public showAlert: Boolean = false;
@@ -31,8 +36,8 @@ export class AddNewsComponent implements OnInit {
 		
   }
 
-  saveNews(title, newsPreview, newsText) {
-		this.dataservice.saveNews(hash(title), title, newsPreview, newsText);
+  saveNews(title, newsPreview) {
+		this.dataservice.saveNews(hash(title), title, newsPreview, this.froalaContent);
     this.http.get("/api/news").subscribe(data => {
 			this.news = data;
 			setTimeout(() => {

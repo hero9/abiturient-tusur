@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { froalaEditor } from 'froala-editor';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';	
 
 @Component({
   selector: 'app-froala',
   templateUrl: './froala.component.html',
   styleUrls: ['./froala.component.css']
 })
-export class FroalaComponent implements OnInit {
+export class FroalaComponent {
 
+	@Output() editorContentChange = new EventEmitter<string>();
+ 
   constructor() { }
 
-  ngOnInit() {
+	onNameChange(froalaContent: string) {
+		this.editorContentChange.emit(froalaContent);
 	}
 	
 	public options: Object = {
