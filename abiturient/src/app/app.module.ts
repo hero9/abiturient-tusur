@@ -38,7 +38,7 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
         tokenGetter: () => {
           return localStorage.getItem('jwtToken');
         },
-        whitelistedDomains: ['localhost:8080']
+        whitelistedDomains: ['localhost:8080', 'http://212.237.5.70:8080']
       }
     }),
 		InterceptorModule

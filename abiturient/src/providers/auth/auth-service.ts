@@ -28,7 +28,7 @@ export class AuthServiceProvider {
     } else {
       return Observable.create(observer => {
 
-        this.http.post("http://localhost:8080/api/signup", credentials)
+        this.http.post("http://212.237.5.70:8080/api/signup", credentials)
         .map(res => res.json())
         .subscribe( data => {
           console.log(data);

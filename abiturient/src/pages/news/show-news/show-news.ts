@@ -20,7 +20,7 @@ export class ShowNewsPage {
 		private _http: HttpClient,
 	) {
 		this.news_id = navParams.data.news_id;
-		this._http.get(`http://localhost:8080/api/news/${this.news_id}`)
+		this._http.get(`http://212.237.5.70:8080/api/news/${this.news_id}`)
 		.subscribe(data => {
 			this.news = data;
 		});
