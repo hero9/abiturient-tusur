@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NewsPage } from '../pages/news/news';
 import { QuizPage } from '../pages/quiz/quiz';
 import { HomePage } from '../pages/home/home';
+import { EventsPage } from './../pages/events/events';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,13 +28,15 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-			{ title: 'Новости', component: NewsPage, icon: 'appname-person' },
-			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' },
+			{ title: 'Новости', component: NewsPage, icon: 'appname-news' },
+			{ title: 'Мероприятия', component: EventsPage, icon: 'appname-event' },
+			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' }
 		];
 		
 		this.activePage = this.pages[0]; 
 
-  }
+	}
+	
 
   initializeApp() {
     this.platform.ready().then(() => {

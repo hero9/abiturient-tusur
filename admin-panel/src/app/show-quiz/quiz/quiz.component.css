@@ -5,6 +5,10 @@
 	color: #3f51b5;
 }
 
+.matFormField {
+	width: 100%;
+}
+
 form {
 	margin-top: 50px;
 }
@@ -18,22 +22,18 @@ form {
 	height: 20px;
 }
 
-.matFormField {
-	width: 80%;
-}
-
 .matFormField_cost {
-		width: 200px;
-}
-
-.matFormField .answer_input {
-	width: 90%;
+	width: 200px;
 }
 
 .add_answer {
 	color: #3f51b5;
-    margin-bottom: 23px;
-    cursor: pointer;
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
+.add_answer__options {
+	width: 93%;
 }
 
 button.btn {
@@ -41,15 +41,6 @@ button.btn {
 	width: 20%;
 }
 
-.answer_wrapper {
-	margin-left: 32px;
-	width: 92%;
-}
-
 .isCorrect {
 	margin-bottom: 9px;
-}
-
-.answer_list {
-	margin-left: 67px;
 }

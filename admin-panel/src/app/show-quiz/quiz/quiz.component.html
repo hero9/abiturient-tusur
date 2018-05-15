@@ -3,7 +3,7 @@
 		<div class="col-md-2"></div>
 		<div class="col">
 			<h3 class="title">Вопросы для викторины</h3>
-			<form>
+			<form #newsForm="ngForm">
 				<div class="question_wrapper">
 
 					<mat-form-field class="matFormField">
@@ -20,16 +20,19 @@
 					</mat-list>
 
 					<div class="answer_wrapper">
-						<mat-form-field class="matFormField">
-							<textarea class="quiz_textarea answer_input" matInput placeholder="Favorite food" name="option" #option matTextareaAutosize matAutosizeMinRows="1"
-							 matAutosizeMaxRows="5"></textarea>
+						<mat-form-field class="matFormField add_answer__options">
+							<textarea class="quiz_textarea answer_input" matInput [(ngModel)]="answer_option"
+							placeholder="Добавьте ответ" name="answer_option" #option matTextareaAutosize matAutosizeMinRows="1"
+							matAutosizeMaxRows="5"></textarea>
 						</mat-form-field>
 						<mat-checkbox class="isCorrect" *ngIf="!hideCheckbox" name="isCorrect" [(ngModel)]="isCorrect"></mat-checkbox>
 						<i class="material-icons add_answer" (click)="addOption(option.value)">add_circle</i>
 					</div>
 
-					<button class="btn" (click)="saveQuestion(question.value, cost.value)">Далее</button>
-
+					<button class="btn" (click)="saveQuestion(question.value, cost.value); onClickMe()">Далее</button>
+					<p *ngFor="let alert of alerts" class="alert-wrapper">
+							<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+						</p>
 				</div>
 			</form>
 		</div>

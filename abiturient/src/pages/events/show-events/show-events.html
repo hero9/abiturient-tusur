@@ -1,0 +1,20 @@
+<ion-header>
+		<ion-navbar>
+			<ion-title>Мероприятия</ion-title>
+		</ion-navbar>
+	</ion-header>
+	
+	
+	<ion-content class="show-content">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12>
+					<p class="content_title">
+						{{ event?.title }}
+					</p>
+					<p class="e2e-inner-html-bound" [innerHTML]="event?.eventText"></p>
+					<strong>{{ event?.publishedDate | date}}</strong>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-content>

@@ -14,10 +14,11 @@ export class DataService {
 
 	constructor( private _http: Http, private http: HttpClient ) { }
 
-	saveNews(id, title, newsPreview, newsText) {
+	saveNews(id, title, imagePreview, newsPreview, newsText) {
     const obj = {
 			id: id,
 			title: title,
+			imagePreview: imagePreview,
 			newsPreview : newsPreview,
 			newsText: newsText
     };

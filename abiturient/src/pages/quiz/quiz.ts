@@ -29,7 +29,8 @@ export class QuizPage {
 	) { }
 
   ionViewDidLoad() {
-    this._http.get("http://212.237.5.70:8080/api/quiz").subscribe(data => {
+    /* this._http.get("http://212.237.5.70:8080/api/quiz").subscribe(data => { */
+		this._http.get("http://localhost:8080/api/quiz").subscribe(data => {
 		this.quizes = data;
 	});
   }

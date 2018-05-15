@@ -10,7 +10,20 @@ export class ShowQuizComponent implements OnInit {
 
 	quizes: any;
 
-  constructor( private _http: HttpClient ) { }
+	constructor( private _http: HttpClient ) { }
+	
+	deleteQuestion(_id) {
+		this._http.delete('/api/quiz/' + _id)
+			.subscribe(res => {
+				this._http.get("/api/quiz").subscribe(data => {
+					this.quizes = data;
+				});
+			}, 
+				(err) => {
+					console.log(err);
+				}
+			);
+	};
 
   ngOnInit() {
 		this._http.get('/api/quiz').subscribe(data => {

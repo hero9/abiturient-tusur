@@ -8,19 +8,20 @@ import * as hash from "hash-string";
 
 @Component({
 	selector: "add-news",
-  templateUrl: "./add-news.component.html"
+	templateUrl: "./add-news.component.html",
 })
 export class AddNewsComponent implements OnInit {
 	
+	public alerts: Array<IAlert> = [];
+  public showAlert: Boolean = false;
 	news: any;
 	public froalaContent: string = '';
+	previewImage: any;
+	labelText: string = "Загрузить изображение";
 
 	edtContent($event : string){
 		this.froalaContent = $event;
 	}
-
-  public alerts: Array<IAlert> = [];
-  public showAlert: Boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -34,10 +35,22 @@ export class AddNewsComponent implements OnInit {
       message: "Новость добавлена! Вы будете перенаправлены на страницу новостей..."
 		});
 		
-  }
+	}
+
+	previewFile() {
+		let file = (document.querySelector('.upload_file') as HTMLInputElement).files[0]; 
+		const fileReader: FileReader = new FileReader();
+		this.labelText = file.name;
+
+		fileReader.onloadend = (event : Event) => {
+			let previewImage = fileReader.result;
+			this.previewImage = previewImage;
+		}
+		fileReader.readAsDataURL(file);
+	}
 
   saveNews(title, newsPreview) {
-		this.dataservice.saveNews(hash(title), title, newsPreview, this.froalaContent);
+		this.dataservice.saveNews(hash(title), title, this.previewImage, newsPreview, this.froalaContent);
     this.http.get("/api/news").subscribe(data => {
 			this.news = data;
 			setTimeout(() => {
@@ -59,7 +72,7 @@ export class AddNewsComponent implements OnInit {
       }.bind(this),
       3000
 		);
-  }
+	}
 
   ngOnInit() {
     

@@ -5,15 +5,16 @@
 </ion-header>
 
 
-	<ion-content class="show-content">
-		<ion-card>
-			<ion-card-content>
-				<ion-card-title>
+<ion-content class="show-content">
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12>
+				<p class="content_title">
 					{{ news?.title }}
-				</ion-card-title>
-				<p class="e2e-inner-html-bound" 
-				[innerHTML]="news?.newsText"></p>
+				</p>
+				<p class="e2e-inner-html-bound" [innerHTML]="news?.newsText"></p>
 				<strong>{{ news?.publishedDate | date}}</strong>
-			</ion-card-content>
-		</ion-card>
-	</ion-content>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

@@ -5,13 +5,13 @@ import { HttpClient } from "@angular/common/http";
 
 @IonicPage()
 @Component({
-  selector: 'page-show-news',
-  templateUrl: 'show-news.html',
+  selector: 'page-show-events',
+  templateUrl: 'show-events.html',
 })
-export class ShowNewsPage {
+export class ShowEventsPage {
 
-	news: {};
-	news_id : any;
+	event: {};
+	event_id : any;
 
   constructor(
 		public navCtrl: NavController, 
@@ -19,12 +19,12 @@ export class ShowNewsPage {
 		public auth: AuthServiceProvider,
 		private _http: HttpClient,
 	) {
-		this.news_id = navParams.data.news_id;
-		/* this._http.get(`http://212.237.5.70:8080/api/news/${this.news_id}`) */
-		this._http.get(`http://localhost:8080/api/news/${this.news_id}`)
+		this.event_id = navParams.data.event_id;
+		/* this._http.get(`http://212.237.5.70:8080/api/events/${this.event_id}`) */
+		this._http.get(`http://localhost:8080/api/events/${this.event_id}`)
 		.subscribe(data => {
-			this.news = data;
+			this.event = data;
 		});
-	}
+  }
 
 }

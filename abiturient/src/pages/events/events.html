@@ -3,22 +3,22 @@
 		<button ion-button icon-only menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Новости</ion-title>
+		<ion-title>Мероприятия</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content overflow-scroll="true">
 	<div>
-		<ion-card *ngFor="let item of news">
+		<ion-card *ngFor="let item of events">
 			<input class="hidden_id" value="{{ item._id }}" #id>
 			<img src="../../assets/imgs/nin-live.png" />
 			<ion-card-content>
 				<ion-card-title>
 					{{ item.title }}
 				</ion-card-title>
-				<p>{{ item.newsPreview }}</p>
+				<p>{{ item.eventPreview }}</p>
 				<strong>{{ item.publishedDate | date}}</strong>
-				<button ion-button clear class="btn__card" (click)="showNews(id.value)"> Далее
+				<button ion-button clear class="btn__card" (click)="showEvent(id.value)"> Далее
 				</button>
 			</ion-card-content>
 		</ion-card>

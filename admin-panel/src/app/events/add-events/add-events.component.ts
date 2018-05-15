@@ -13,6 +13,11 @@ export class AddEventsComponent implements OnInit {
 	public alerts: Array<IAlert> = [];
   public showAlert: Boolean = false;
 	events: any;
+	public froalaContent: string = '';
+
+	edtContent($event : string){
+		this.froalaContent = $event;
+	}
 
 	constructor(
 		private http: HttpClient, 
@@ -26,8 +31,8 @@ export class AddEventsComponent implements OnInit {
 		});
 	}
 	
-	saveEvent(eventTitle, eventPreview, eventText) {
-    this.dataservice.saveEvent(eventTitle, eventPreview, eventText);
+	saveEvent(eventTitle, eventPreview) {
+    this.dataservice.saveEvent(eventTitle, eventPreview, this.froalaContent);
     this.http.get("/api/events").subscribe(data => {
 			this.events = data;
 			setTimeout(() => {

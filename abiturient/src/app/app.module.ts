@@ -7,11 +7,13 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { NewsPage } from '../pages/news/news';
-import { QuizPage } from '../pages/quiz/quiz';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { QuizPage } from '../pages/quiz/quiz';
+import { NewsPage } from '../pages/news/news';
 import { ShowNewsPage } from './../pages/news/show-news/show-news';
+import { EventsPage } from './../pages/events/events';
+import { ShowEventsPage } from './../pages/events/show-events/show-events';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,12 +23,14 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-		NewsPage,
-		QuizPage,
+		HomePage,
 		LoginPage,
 		RegisterPage,
-		ShowNewsPage
+		QuizPage,
+		NewsPage,	
+		ShowNewsPage,
+		EventsPage,
+		ShowEventsPage
   ],
   imports: [
 		BrowserModule,
@@ -46,12 +50,14 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-		NewsPage,
-		QuizPage,
+		HomePage,
 		LoginPage,
 		RegisterPage,
-		ShowNewsPage
+		QuizPage,
+		NewsPage,
+		ShowNewsPage,
+		EventsPage,
+		ShowEventsPage
   ],
   providers: [
     StatusBar,

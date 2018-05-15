@@ -38,7 +38,6 @@ router.post("/image_upload", (req, res) => {
   upload_image(req, function(err, data) {
  
     if (err) {
-			console.log("errrr", err);
 			return res.status(404).end(JSON.stringify(err));
     }
  
@@ -65,8 +64,9 @@ if (!fs.existsSync(filesDir)){
 router.post("/news", checkAuth, (req, res, next) => {
   News.create(
     {
-      id: req.body.id,
-      title: req.body.title,
+			id: req.body.id,
+			title: req.body.title,
+			imagePreview: req.body.imagePreview,
       newsPreview: req.body.newsPreview,
       newsText: req.body.newsText
     },
@@ -112,7 +112,6 @@ router.post("/signup", (req, res) => {
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           if (err) {
-            console.log("error here");
             return res.status(500).json({
               error: err
             });
@@ -320,6 +319,13 @@ router.put("/pages/:id", checkAuth, (req, res, next) => {
   });
 });
 
+router.put("/quiz/:id", checkAuth, (req, res, next) => {
+  Quizes.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 /* =======  DELETE Requests ======== */
 router.delete("/news/:id", checkAuth, (req, res) => {
   News.findByIdAndRemove(req.params.id, (err, post) => {
@@ -348,6 +354,17 @@ router.delete("/pages/:id", checkAuth, (req, res) => {
     if (err) return res.status(500).send(err);
     const response = {
       message: "Event successfully deleted",
+      id: req.params.id
+    };
+    return res.status(200).send(response);
+  });
+});
+
+router.delete("/quiz/:id", checkAuth, (req, res) => {
+  Quizes.findByIdAndRemove(req.params.id, (err, post) => {
+    if (err) return res.status(500).send(err);
+    const response = {
+      message: "Question successfully deleted",
       id: req.params.id
     };
     return res.status(200).send(response);

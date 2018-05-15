@@ -27,10 +27,17 @@ ion-icon {
 	&[class*="appname-logout"] {
 		mask-image: url(../assets/imgs/logout.svg)
 	}
+	&[class*="appname-news"] {
+		mask-image: url(../assets/imgs/icon-news.svg)
+	}
+	&[class*="appname-event"] {
+		mask-image: url(../assets/imgs/icon-event.svg)
+	}
 }
 
-.scroll-content {
-	overflow: hidden !important;
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar_person {
@@ -62,4 +69,12 @@ ion-icon {
 .activeHighlight {
 	background-image: url(../assets/imgs/menu_list-rectangle.png);
 	background-repeat: no-repeat;
+}
+
+.content_title {
+	font-size: 1.5em;
+}
+
+.show-content p {
+	padding-bottom: 20px !important;
 }

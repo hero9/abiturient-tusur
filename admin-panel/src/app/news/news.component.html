@@ -12,6 +12,7 @@
 					<mat-icon ><i class="material-icons">edit</i></mat-icon>
 				</button>
 				<h4>{{ item.title }}</h4>
+				<img src={{item.imagePreview}} alt="Image Preview">
 				<h6>
 					<b>{{ item.newsPreview }}</b>
 				</h6>
@@ -21,7 +22,6 @@
 			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-news'">
 				<i class="material-icons">add</i>
 			</button>
-			<!-- <img src="http://localhost:8080/api/froala/uploads/0a651890bb97d07fe2be0fa867ef9d936f8c6e72.png" > -->
 		</div>
 	</div>
 </div>

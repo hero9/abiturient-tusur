@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col">
-			<form class="add-form__wrapper" (ngSubmit)="saveEvent(eventTitle.value, eventPreview.value, editorContent)" #newsForm="ngForm">
+			<form class="add-form__wrapper" (ngSubmit)="saveEvent(eventTitle.value, eventPreview.value)" #newsForm="ngForm">
 				<div class="add__container">
 					<mat-form-field>
 						<textarea matInput class="title" placeholder="Заголовок" #eventTitle required></textarea>
@@ -12,7 +12,8 @@
 					</mat-form-field>
 					<div class="newsText">
 						<h5>Текст мероприятия</h5>
-						<textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #eventText required></textarea>
+						<app-froala (editorContentChange)=edtContent($event)></app-froala>
+						<!-- <textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #eventText required></textarea> -->
 					</div>
 					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
 					<p *ngFor="let alert of alerts" class="alert-wrapper">

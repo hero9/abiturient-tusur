@@ -2,11 +2,15 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col">
-			<form class="add-form__wrapper" (ngSubmit)="saveNews(newsTitle.value, newsPreview.value, editorContent1)" #newsForm="ngForm">
+			<form class="add-form__wrapper" (ngSubmit)="saveNews(newsTitle.value, newsPreview.value)" #newsForm="ngForm">
 				<div class="add__container">
 					<mat-form-field>
 						<textarea matInput class="title" placeholder="Заголовок" #newsTitle required></textarea>
 					</mat-form-field>
+					<label for="file-upload" class="custom-file-upload">
+						<i class="fa fa-cloud-upload"></i> {{labelText}}
+					</label>
+					<input id="file-upload" class="upload_file" type="file" (change)="previewFile()"/>
 					<mat-form-field class="preview-wrapper">
 						<textarea matInput placeholder="Превью" #newsPreview required></textarea>
 					</mat-form-field>

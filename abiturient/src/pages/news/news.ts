@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from './../../providers/auth/auth-service';
+import { HttpClient } from "@angular/common/http";
 import { HomePage } from './../home/home';
 import { ShowNewsPage } from './show-news/show-news';
 
@@ -13,7 +13,7 @@ import { ShowNewsPage } from './show-news/show-news';
 export class NewsPage {
 	
 	news : {};
-	id : any;	
+	id : string;	
 
 	ionViewCanEnter() {
     if (!this.auth.isAuthenticated()) {
@@ -29,7 +29,8 @@ export class NewsPage {
 		public auth: AuthServiceProvider,
 		private _http: HttpClient,
 	) {
-		this._http.get("http://212.237.5.70:8080/api/news").subscribe(data => {
+		/* this._http.get("http://212.237.5.70:8080/api/news").subscribe(data => { */
+		this._http.get("http://localhost:8080/api/news").subscribe(data => {	
 			this.news = data;
 		});
 	}
