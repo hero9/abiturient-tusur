@@ -11,7 +11,7 @@
 	<div>
 		<ion-card *ngFor="let item of news">
 			<input class="hidden_id" value="{{ item._id }}" #id>
-			<img src="../../assets/imgs/nin-live.png" />
+			<img *ngIf="item.imagePreview" class="preview_image" src={{item.imagePreview}} />
 			<ion-card-content>
 				<ion-card-title>
 					{{ item.title }}

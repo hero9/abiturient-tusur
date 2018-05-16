@@ -11,6 +11,11 @@
 
 ion-content[scroll="true"] {
   scroll-content {
-    overflow-y: hidden!important;
+    overflow-y: hidden !important;
   }
+}
+
+.preview_image {
+	width: 100%;
+  height: 208px;
 }

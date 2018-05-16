@@ -17,32 +17,20 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
-	<ion-list class="quiz_list">
-		<ion-list-header class="quiz_list__header">
-			Сегодняшний вопрос
-		</ion-list-header>
-		<button ion-item class="ion_list__item">Вопрос №1</button>
-	</ion-list>
-	<p class="quiz_question__weight">За правильный ответ вы получите 10 баллов.</p>
-	<ion-list class="quiz_list">
-		<ion-list-header class="quiz_list__header">
-			Прошедшие тесты
-		</ion-list-header>
-		<button ion-item class="ion_list__item" *ngFor="let item of quizes">{{ item.question }}</button>
-	</ion-list>
-	<p class="quiz_question__weight">За правильный ответ вы получите не 10, а 5 баллов.</p>
-</ion-content>
-<!-- (click)="itemSelected(item)" -->
 
-<!-- <ion-content padding>
-	<div *ngFor="let item of quizes">
-			<p> {{ item.question }} </p>
-			<ion-item-group>
-				<ion-item-divider color="light">
-					Ответы
-				</ion-item-divider>
-				<ion-item *ngFor="let opt of item.options" (click)="answer(opt._id)">{{ opt.text }}</ion-item>
-				<small>Количество баллов за вопрос {{ item.cost }}</small>
-			</ion-item-group>
-		</div>
-</ion-content> -->
+	<ion-list class="quiz_list" *ngIf="notAnswered">
+		<ion-list-header class="quiz_list__header">
+			Текущие вопросы
+		</ion-list-header>
+		<button ion-item class="ion_list__item" *ngFor="let item of notAnswered" (click)="getQuestion(item._id)"> {{ item.question }}
+		</button>
+	</ion-list>
+	
+	<ion-list class="quiz_list" *ngIf="answered">
+		<ion-list-header class="quiz_list__header">
+			Прошедшие вопросы
+		</ion-list-header>
+		<button ion-item class="ion_list__item" *ngFor="let item of answered">{{ item.question }}</button>
+	</ion-list>
+
+</ion-content>

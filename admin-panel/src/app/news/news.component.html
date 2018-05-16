@@ -12,7 +12,7 @@
 					<mat-icon ><i class="material-icons">edit</i></mat-icon>
 				</button>
 				<h4>{{ item.title }}</h4>
-				<img src={{item.imagePreview}} alt="Image Preview">
+				<img *ngIf="item.imagePreview" src={{item.imagePreview}} alt="Image Preview">
 				<h6>
 					<b>{{ item.newsPreview }}</b>
 				</h6>

@@ -28,13 +28,13 @@ export class AppComponent implements OnInit, DoCheck {
 			});
 
 			this.menuItems = [
-				{ name: "Статистика", route: "/stats" },
-				{ name: "Игры", route: "/apps" },
-				{ name: "Новости", route: "/news" },
-				{ name: "Мероприятия", route: "/events" },
-				{ name: "Настройки", route: "/settings" },
-				{ name: "Страницы", route: "/page" },
-				{ name: "Викторина", route:"/show-quiz" },
+				{ name: "Статистика", route: "stats" },
+				{ name: "Игры", route: "apps" },
+				{ name: "Новости", route: "news" },
+				{ name: "Мероприятия", route: "events" },
+				{ name: "Настройки", route: "settings" },
+				{ name: "Страницы", route: "page" },
+				{ name: "Викторина", route:"show-quiz" },
 			];
 	}
 

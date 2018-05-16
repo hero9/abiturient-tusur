@@ -21,7 +21,6 @@ export class NewsPage {
 			this.navCtrl.push( HomePage );
     }
 	}
-	
 
   constructor(
 		public navCtrl: NavController, 

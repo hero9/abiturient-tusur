@@ -8,7 +8,7 @@ const QuizesSchema = new mongoose.Schema({
 			isCorrect: Boolean
 		}
 	],
-	cost: Number
+	cost: Number,
 });
 
 module.exports = mongoose.model('Quizes', QuizesSchema);

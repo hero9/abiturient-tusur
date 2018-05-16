@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { QuizPage } from '../pages/quiz/quiz';
+import { ShowQuestionPage } from './../pages/quiz/show-question/show-question';
 import { NewsPage } from '../pages/news/news';
 import { ShowNewsPage } from './../pages/news/show-news/show-news';
 import { EventsPage } from './../pages/events/events';
@@ -27,10 +28,11 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		LoginPage,
 		RegisterPage,
 		QuizPage,
+		ShowQuestionPage,
 		NewsPage,	
 		ShowNewsPage,
 		EventsPage,
-		ShowEventsPage
+		ShowEventsPage,
   ],
   imports: [
 		BrowserModule,
@@ -54,6 +56,7 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		LoginPage,
 		RegisterPage,
 		QuizPage,
+		ShowQuestionPage,
 		NewsPage,
 		ShowNewsPage,
 		EventsPage,
@@ -63,7 +66,7 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-		AuthServiceProvider
+		AuthServiceProvider,
   ]
 })
 export class AppModule {}

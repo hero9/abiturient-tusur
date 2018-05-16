@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Вопрос</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12>
+				<p class="quiz_title">{{ question?.question }}</p>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-list>
+		<ion-list-header class="quiz_list__header">
+			Ответы
+		</ion-list-header>
+		<ion-item class="options_item" *ngFor="let item of question?.options" (click)="chooseAnswer(item._id)">
+			<p>А. {{ item.text }}</p>
+		</ion-item>
+	</ion-list>
+	<p class="quiz_question__weight">Количество баллов за вопрос: {{ question?.cost }}</p>
+</ion-content>

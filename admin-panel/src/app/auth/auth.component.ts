@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit {
 		.subscribe(res => {
 			this.data = res;
 			localStorage.setItem('jwtToken', this.data.token);
-			this._router.navigate(['stats']);
+			this._router.navigate(['news']);
 		}, err => {
 			this.message = err.error.msg;
 		});

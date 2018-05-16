@@ -193,12 +193,25 @@ router.post("/quiz", checkAuth, (req, res, next) => {
 });
 
 router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
-	Quizes.find({"options._id": req.params.id}, (err, question) => {
+	Scores.findOne({userId: req.userData._id}, (err, res) => {
+		let answered = res.answeredQuestions;
+		answered.push(req.params.id);
+		Scores.update({ userId : req.userData._id }, { 
+				answeredQuestions : answered
+			},
+			(err, res) => {
+				if (err) return next(err);
+		});
+	});
+	Quizes.find({"options._id": req.body.id}, (err, question) => {
+		console.log(question[0].options);
 		question[0].options.forEach( (option) => {
-			if(req.params.id == option._id) {
+			if(req.body.id == option._id) {
 				if(option.isCorrect) {
 					Scores.findOne({userId: req.userData._id}, (err, res) => {
-						Scores.update({ userId : req.userData._id }, { quizScore : res.quizScore + question[0].cost },
+						Scores.update({ userId : req.userData._id }, { 
+								quizScore : res.quizScore + question[0].cost,
+							},
 							(err, res) => {
 								if (err) return next(err);
 						});
@@ -294,6 +307,20 @@ router.get("/events/:id", checkAuth, (req, res, next) => {
   Events.findOne({ _id: req.params.id }, (err, post) => {
     if (err) return next(err);
     res.json(post);
+  });
+});
+
+router.get("/quiz/:id", checkAuth, (req, res, next) => {
+  Quizes.findOne({ _id: req.params.id }, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+router.get("/score", checkAuth, (req, res, next) => {
+  Scores.find({ userId: req.userData._id }, (err, post) => {
+    if (err) return next(err);
+    res.json(post[0].answeredQuestions);
   });
 });
 
