@@ -28,8 +28,7 @@ export class NewsPage {
 		public auth: AuthServiceProvider,
 		private _http: HttpClient,
 	) {
-		/* this._http.get("http://212.237.5.70:8080/api/news").subscribe(data => { */
-		this._http.get("http://localhost:8080/api/news").subscribe(data => {	
+		this._http.get(`${auth.rootUrl}/news`).subscribe(data => {	
 			this.news = data;
 		});
 	}

@@ -18,19 +18,25 @@
 		</ion-row>
 	</ion-grid>
 
-	<ion-list class="quiz_list" *ngIf="notAnswered">
+	<ion-list class="quiz_list" *ngIf="notAnsweredLength">
 		<ion-list-header class="quiz_list__header">
 			Текущие вопросы
 		</ion-list-header>
 		<button ion-item class="ion_list__item" *ngFor="let item of notAnswered" (click)="getQuestion(item._id)"> {{ item.question }}
 		</button>
 	</ion-list>
+
+	<ion-card *ngIf="!notAnsweredLength">
+		<ion-card-header class="quiz_alert">
+			Новых вопрос нет!
+		</ion-card-header>		
+	</ion-card>
 	
-	<ion-list class="quiz_list" *ngIf="answered">
+	<ion-list class="quiz_list" *ngIf="answeredLength">
 		<ion-list-header class="quiz_list__header">
 			Прошедшие вопросы
 		</ion-list-header>
-		<button ion-item class="ion_list__item" *ngFor="let item of answered">{{ item.question }}</button>
+		<button ion-item class="ion_list__item answered_question" *ngFor="let item of answered" (click)="showAlert()">{{ item.question }}</button>
 	</ion-list>
 
 </ion-content>

@@ -21,8 +21,7 @@ export class EventsPage {
 		public auth: AuthServiceProvider,
 		private _http: HttpClient,
 	) {
-		/* this._http.get("http://212.237.5.70:8080/api/events").subscribe(data => { */
-		this._http.get("http://localhost:8080/api/events").subscribe(data => {	
+		this._http.get(`${auth.rootUrl}/events`).subscribe(data => {	
 			this.events = data;
 		});
   }

@@ -1,4 +1,3 @@
-/* import { HttpClient } from '@angular/common/http'; */
 import { Injectable } from "@angular/core";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from "rxjs/Observable";
@@ -8,11 +7,11 @@ import { Http } from '@angular/http';
 @Injectable()
 export class AuthServiceProvider {
   data: any;
-  message: "";
+	message: "";
+	rootUrl: string = 'http://localhost:8080/api';
 
   constructor( 
-		public jwtHelper: JwtHelperService, 
-		/* private _http: HttpClient, */
+		public jwtHelper: JwtHelperService,
 		public http: Http 
 	) { }
 
@@ -27,9 +26,7 @@ export class AuthServiceProvider {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-
-				/* this.http.post("http://212.237.5.70:8080/api/signup", credentials) */
-				this.http.post("http://localhost:8080/api/signup", credentials)
+				this.http.post(`${this.rootUrl}/signup`, credentials)
         .map(res => res.json())
         .subscribe( data => {
           console.log(data);

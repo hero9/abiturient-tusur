@@ -20,8 +20,7 @@ export class ShowEventsPage {
 		private _http: HttpClient,
 	) {
 		this.event_id = navParams.data.event_id;
-		/* this._http.get(`http://212.237.5.70:8080/api/events/${this.event_id}`) */
-		this._http.get(`http://localhost:8080/api/events/${this.event_id}`)
+		this._http.get(`${auth.rootUrl}/events/${this.event_id}`)
 		.subscribe(data => {
 			this.event = data;
 		});

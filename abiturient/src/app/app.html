@@ -20,9 +20,9 @@
 				<ion-col col-1></ion-col>
 			</ion-row>
 		</ion-grid>
-		<ion-list>
+		<ion-list class="sidebar_list">
 			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [class.activeHighlight]="checkActive(p)" detail-none>
-				<ion-icon class="menu-items__icon" item-left [name]="p.icon"></ion-icon>
+				<ion-icon item-left [name]="p.icon"></ion-icon>
 				{{p.title}}
 			</button>
 			<button menuClose ion-item (click)="logout()" detail-none>

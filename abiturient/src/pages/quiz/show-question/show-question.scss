@@ -1,4 +1,45 @@
-.options_item p{
-	cursor: pointer;
+.quiz_title_wrap {
+	margin-top: 15px;
+	padding-left: 0;
+}
+
+.options_item p {
+	height: 20px;
+	color: #000000;
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: -0.41px;
 	white-space: pre-wrap;
+	display: inline-block;
+	font-family: 'SFUIText-Regular';
+	cursor: pointer;
+}
+
+/* .options_item img {
+	position: absolute;
+	right: 14px;
+	top: 14px;
+	width: 14px;
+	height: 14px;
+	fill: #007bfe;
+} */
+
+.show_quiz_weight {
+	margin-top: -20px;
+}
+
+.btn {
+	text-align: center;
+}
+
+.choose_answer {
+	width: 198px;
+	height: 53px;
+	border-radius: 100px;
+	background-color: #ffc032;
+	color: #ffffff;
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: -0.41px;
+	font-family: 'SFUIText-Regular';
 }

@@ -1,0 +1,36 @@
+ion-icon {
+  &[class*="appname-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: #0059ae;
+    width: 1em;
+    height: 1em;
+  }
+  &[class*="appname-person"] {
+    mask-image: url(../assets/imgs/icon-person.svg);
+  }
+  &[class*="appname-list"] {
+    mask-image: url(../assets/imgs/icon-list.svg);
+  }
+  &[class*="appname-study"] {
+    mask-image: url(../assets/imgs/icon-study.svg);
+  }
+  &[class*="appname-quiz"] {
+    mask-image: url(../assets/imgs/icon-quiz.svg);
+  }
+  &[class*="appname-calc"] {
+    mask-image: url(../assets/imgs/icon-calc.svg);
+	}
+	&[class*="appname-logout"] {
+		mask-image: url(../assets/imgs/logout.svg)
+	}
+	&[class*="appname-news"] {
+		mask-image: url(../assets/imgs/icon-news.svg)
+	}
+	&[class*="appname-event"] {
+		mask-image: url(../assets/imgs/icon-event.svg)
+	}
+}

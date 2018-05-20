@@ -1,38 +1,28 @@
-ion-icon {
-  &[class*="appname-"] {
-    // Instead of using the font-based icons
-    // We're applying SVG masks
-    mask-size: contain;
-    mask-position: 50% 50%;
-    mask-repeat: no-repeat;
-    background: #0059ae;
-    width: 1em;
-    height: 1em;
-  }
-  &[class*="appname-person"] {
-    mask-image: url(../assets/imgs/icon-person.svg);
-  }
-  &[class*="appname-list"] {
-    mask-image: url(../assets/imgs/icon-list.svg);
-  }
-  &[class*="appname-study"] {
-    mask-image: url(../assets/imgs/icon-study.svg);
-  }
-  &[class*="appname-quiz"] {
-    mask-image: url(../assets/imgs/icon-quiz.svg);
-  }
-  &[class*="appname-calc"] {
-    mask-image: url(../assets/imgs/icon-calc.svg);
-	}
-	&[class*="appname-logout"] {
-		mask-image: url(../assets/imgs/logout.svg)
-	}
-	&[class*="appname-news"] {
-		mask-image: url(../assets/imgs/icon-news.svg)
-	}
-	&[class*="appname-event"] {
-		mask-image: url(../assets/imgs/icon-event.svg)
-	}
+@import "fonts.scss";
+@import "icons.scss";
+
+
+ion-title {
+	color: #ffffff;
+	font-family: "SF UI Display";
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 26px;
+	letter-spacing: -0.21px;
+}
+
+ion-card-title {
+	font-family: 'SFUIText-Semibold';
+}
+
+.preview {
+	font-family: 'SFUIText-Regular';
+}
+
+.date {
+	font-family: 'SFUIText-BoldItalic';
+	display: inline-block;
+	padding-top: 18px;
 }
 
 ::-webkit-scrollbar,
@@ -51,12 +41,14 @@ ion-icon {
 
 .sidebar_person b {
   font-size: 17px;
-  margin-bottom: 10px;
+	margin-bottom: 10px;
+	font-family: 'SFUIText-Semibold';
 }
 
 .sidebar_person small {
   color: #005aae;
-  font-size: 14px;
+	font-size: 14px;
+	font-family: 'SFUIText-Regular';
 }
 
 .sidebar_avatar {
@@ -73,8 +65,31 @@ ion-icon {
 
 .content_title {
 	font-size: 1.5em;
+	font-family: 'SFUIText-Semibold';
+	padding-bottom: 20px;
 }
 
-.show-content p {
-	padding-bottom: 20px !important;
+.show-content p:nth-child(2) {
+	font-family: 'SFUIText-Medium';
+	font-size: 15px;
+	line-height: 21.5px;
+	padding-bottom: 10px;
+}
+
+.sidebar_list {
+	font-family: 'SFUIText-Regular';
+}
+
+.card_button {
+	display: inline-block;
+	width: 100%;	
+}
+
+.card_button  button{
+	float: right;
+	font-family: 'SFUIText-Regular';
+}
+
+.card_button .button-md {
+	padding-top: 8px;
 }

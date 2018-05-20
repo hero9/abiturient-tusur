@@ -10,19 +10,23 @@
 <ion-content>
 	<ion-grid>
 		<ion-row>
-			<ion-col col-12>
+			<ion-col col-12 class="quiz_title_wrap">
 				<p class="quiz_title">{{ question?.question }}</p>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 
-	<ion-list>
+	<ion-list radio-group>
 		<ion-list-header class="quiz_list__header">
-			Ответы
+			Варианты ответа:
 		</ion-list-header>
-		<ion-item class="options_item" *ngFor="let item of question?.options" (click)="chooseAnswer(item._id)">
-			<p>А. {{ item.text }}</p>
+		<ion-item class="options_item" *ngFor="let item of question?.options">
+			<ion-label>{{ item.text }}</ion-label>
+			<ion-radio (click)="toggleOption(item._id)"></ion-radio>
 		</ion-item>
 	</ion-list>
-	<p class="quiz_question__weight">Количество баллов за вопрос: {{ question?.cost }}</p>
+	<p class="quiz_question__weight show_quiz_weight">Количество баллов за вопрос: {{ question?.cost }}</p>
+	<div class="btn">
+		<button type="submit" class="choose_answer" (click)="answer()" [disabled]="!optionState">Ответить</button>
+	</div>
 </ion-content>

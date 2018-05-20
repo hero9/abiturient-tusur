@@ -1,11 +1,20 @@
 .quiz_title {
+	font-family: 'SFUIText-Regular';
+	margin-left: 10px;
 	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: -0.31px;
 }
 
 .quiz_list__header {
 	background-color: #efeff4;
 	color: #6d6d72;
 	font-weight: 400;
+	font-family: 'SFUIText-Regular';
+	font-size: 13px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: -0.08px;
 }
 
 .label-ios {
@@ -20,9 +29,23 @@
 	margin-bottom: 0px;
 }
 
+.quiz_alert {
+	font-family: 'SFUIText-Regular';
+	font-size: 15px;
+}
+
+.quiz_list.list-md {
+	margin-top: 10px;
+}
+
 .quiz_list {
 	margin-bottom: 5px;
 	padding-left: 5px;
+	font-family: 'SFUIText-Regular';
+}
+
+.answered_question .item-inner{
+	background-image: none !important;
 }
 
 .quiz_question__weight {
@@ -31,4 +54,14 @@
 	font-size: 13px;
 	font-weight: 400;
 	margin-bottom: 20px;
+	font-family: 'SFUIText-Regular';
+}
+
+.alert_custom {
+	color: #111111;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: -0.08px;
+	font-family: 'SFUIText-Regular';
 }

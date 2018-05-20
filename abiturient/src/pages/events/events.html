@@ -16,10 +16,11 @@
 				<ion-card-title>
 					{{ item.title }}
 				</ion-card-title>
-				<p>{{ item.eventPreview }}</p>
-				<strong>{{ item.publishedDate | date}}</strong>
-				<button ion-button clear class="btn__card" (click)="showEvent(id.value)"> Далее
-				</button>
+				<p class="preview">{{ item.eventPreview }}</p>
+				<div class="card_button">
+					<strong class="date">{{ item.publishedDate | date}}</strong>
+					<button ion-button clear (click)="showEvent(id.value)">Далее</button>
+				</div>
 			</ion-card-content>
 		</ion-card>
 	</div>

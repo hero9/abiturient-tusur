@@ -9,11 +9,9 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col col-12>
-				<p class="content_title">
-					{{ news?.title }}
-				</p>
+				<p class="content_title">{{ news?.title }}</p>
 				<p class="e2e-inner-html-bound" [innerHTML]="news?.newsText"></p>
-				<strong>{{ news?.publishedDate | date}}</strong>
+				<strong class="date">{{ news?.publishedDate | date}}</strong>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

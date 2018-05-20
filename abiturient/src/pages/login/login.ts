@@ -18,18 +18,17 @@ export class LoginPage {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
-		public authService: AuthServiceProvider,
+		public auth: AuthServiceProvider,
 		private _http: HttpClient,
 	) {
   }
 
-  ionViewDidLoad() {
+  /* ionViewDidLoad() {
 		console.log('ionViewDidLoad LoginPage');
-	}
+	} */
 	
 	login(email, password) {
-		/* this._http.post('http://212.237.5.70:8080/api/signin',{ email : email, password : password }) */
-		this._http.post('http://localhost:8080/api/signin',{ email : email, password : password })
+		this._http.post(`${this.auth.rootUrl}/signin`,{ email : email, password : password })
 		.subscribe(res => {
 			this.data = res;
 			localStorage.setItem('jwtToken', this.data.token);

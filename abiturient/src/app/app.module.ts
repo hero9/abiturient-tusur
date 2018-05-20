@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilePage } from './../pages/profile/profile';
 import { QuizPage } from '../pages/quiz/quiz';
 import { ShowQuestionPage } from './../pages/quiz/show-question/show-question';
 import { NewsPage } from '../pages/news/news';
@@ -27,6 +28,7 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		HomePage,
 		LoginPage,
 		RegisterPage,
+		ProfilePage,
 		QuizPage,
 		ShowQuestionPage,
 		NewsPage,	
@@ -55,6 +57,7 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
 		HomePage,
 		LoginPage,
 		RegisterPage,
+		ProfilePage,
 		QuizPage,
 		ShowQuestionPage,
 		NewsPage,
