@@ -1,3 +1,12 @@
-page-show-events {
+.event_dates {
+	font-family: 'SFUIText-Light';
+}
 
+.event_dates strong {
+	font-family: 'SFUIText-BoldItalic';
+	display: inline-block;
+}
+
+.event_dates:nth-child(3) {
+	margin-bottom: 20px;
 }

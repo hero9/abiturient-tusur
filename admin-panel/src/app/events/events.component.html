@@ -5,13 +5,16 @@
 			<mat-card class="card-item" *ngFor="let item of events">
 				<button mat-icon-button class="edit_icon" 
 					(click)="deleteEvent(item._id)">
-					<mat-icon ><i class="material-icons">delete</i></mat-icon>
+					<mat-icon><i class="material-icons">delete</i></mat-icon>
 				</button>
 				<button mat-icon-button class="edit_icon" [routerLink]="'/edit-event'" 
 					(click)="getEditPage(item._id)">
 					<mat-icon ><i class="material-icons">edit</i></mat-icon>
 				</button>
 				<h4>{{ item.title }}</h4>
+				<p>Дата начала: <strong>{{ item.startDate | date }}</strong></p>
+				<p>Дата окончания: <strong>{{ item.endDate | date }}</strong></p> 
+				<img *ngIf="item.imagePreview" src={{item.imagePreview}} alt="Image Preview">
 				<h6><b>{{ item.eventPreview }}</b></h6>
 				<p class="e2e-inner-html-bound" [innerHTML]="item.eventText"></p>
 				<strong>{{ item.publishedDate | date}}</strong>

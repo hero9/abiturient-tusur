@@ -9,9 +9,9 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col col-12>
-					<p class="content_title">
-						{{ event?.title }}
-					</p>
+					<p class="content_title">{{ event?.title }}</p>
+					<p class="event_dates" *ngIf="event?.startDate">Дата начала: <strong>{{ event?.startDate | date}}</strong></p>
+					<p class="event_dates" *ngIf="event?.endDate">Дата окончания: <strong>{{ event?.endDate | date}}</strong></p>
 					<p class="e2e-inner-html-bound" [innerHTML]="event?.eventText"></p>
 					<strong class="date">{{ event?.publishedDate | date}}</strong>
 				</ion-col>

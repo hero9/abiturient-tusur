@@ -26,6 +26,19 @@ export class DataService {
         .subscribe(res => console.log("done"));
 	}
 
+	saveEvent(title, startDate, endDate, imagePreview, eventPreview, eventText) {
+    const obj = {
+			title: title,
+			startDate: startDate,
+			endDate: endDate,
+			imagePreview: imagePreview,
+			eventPreview : eventPreview,
+			eventText: eventText
+    };
+    this.http.post("/api/events", obj)
+        .subscribe(res => console.log("done"));
+  }
+
 	saveQuestion(question, options, cost){
 		const obj = {
 			question: question,
@@ -45,16 +58,6 @@ export class DataService {
     this.http.post("/api/pages", obj)
         .subscribe(res => console.log("done"));
 	}
-	
-	saveEvent(title, eventPreview, eventText) {
-    const obj = {
-			title: title,
-			eventPreview : eventPreview,
-			eventText: eventText
-    };
-    this.http.post("/api/events", obj)
-        .subscribe(res => console.log("done"));
-  }
 	
 	getStudents() {
 		return this._http.get("/api/students")

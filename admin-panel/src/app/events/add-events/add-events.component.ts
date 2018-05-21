@@ -6,7 +6,8 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-events',
-  templateUrl: './add-events.component.html'
+	templateUrl: './add-events.component.html',
+	styleUrls: ['./add-events.component.css']
 })
 export class AddEventsComponent implements OnInit {
 
@@ -14,6 +15,10 @@ export class AddEventsComponent implements OnInit {
   public showAlert: Boolean = false;
 	events: any;
 	public froalaContent: string = '';
+	previewImage: any;
+	labelText: string = "Загрузить изображение";
+	startDate1: {};
+	endDate1: {};
 
 	edtContent($event : string){
 		this.froalaContent = $event;
@@ -30,15 +35,27 @@ export class AddEventsComponent implements OnInit {
       message: "Мероприятие добавлено! Вы будете перенаправлены на страницу мероприятий..."
 		});
 	}
+
+	previewFile() {
+		let file = (document.querySelector('.upload_file') as HTMLInputElement).files[0]; 
+		const fileReader: FileReader = new FileReader();
+		this.labelText = file.name;
+
+		fileReader.onloadend = (event : Event) => {
+			let previewImage = fileReader.result;
+			this.previewImage = previewImage;
+		}
+		fileReader.readAsDataURL(file);
+	}
 	
 	saveEvent(eventTitle, eventPreview) {
-    this.dataservice.saveEvent(eventTitle, eventPreview, this.froalaContent);
+    this.dataservice.saveEvent(eventTitle, this.startDate1, this.endDate1, this.previewImage, eventPreview, this.froalaContent);
     this.http.get("/api/events").subscribe(data => {
 			this.events = data;
 			setTimeout(() => {
 				this.router.navigate(['/events']);
 			}, 3000);
-    });
+		});
 	}
 	
 	public closeAlert(alert: IAlert) {

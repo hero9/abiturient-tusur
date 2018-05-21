@@ -1,0 +1,21 @@
+.card-item img{
+	max-width: 100% !important;
+	max-height: 500px;
+}
+
+.date_pick {
+	width: 500px;
+}
+
+.date_pick div:first-child {
+	margin-right: 50px;
+}
+
+.start_date, .end_date {
+	width: 200px;
+	display: inline-block;
+}
+
+input:not([type]) {
+	margin-bottom: 0px !important;
+}

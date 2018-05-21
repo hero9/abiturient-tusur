@@ -32,7 +32,7 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
 		this._http.get("/api/events").subscribe(data => {
-      this.events = data;
+			this.events = data;
     });
   }
 

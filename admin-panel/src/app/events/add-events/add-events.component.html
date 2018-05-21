@@ -2,18 +2,37 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col">
-			<form class="add-form__wrapper" (ngSubmit)="saveEvent(eventTitle.value, eventPreview.value)" #newsForm="ngForm">
+			<form class="add-form__wrapper" (ngSubmit)="saveEvent(eventTitle.value, startDate.value, endDate.value, eventPreview.value)" #newsForm="ngForm">
 				<div class="add__container">
 					<mat-form-field>
 						<textarea matInput class="title" placeholder="Заголовок" #eventTitle required></textarea>
 					</mat-form-field>
+					<div class="date_pick">
+						<div class="start_date">
+							<mat-form-field class="choose_date">
+								<input matInput [matDatepicker]="startDate" name="startDate1" [(ngModel)]="startDate1" placeholder="Дата начала">
+								<mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+								<mat-datepicker touchUi="true" #startDate></mat-datepicker>
+							</mat-form-field>
+						</div>
+						<div class="end_date">
+							<mat-form-field class="choose_date">
+								<input matInput [matDatepicker]="endDate" name="endDate1" [(ngModel)]="endDate1" placeholder="Дата конца">
+								<mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+								<mat-datepicker touchUi="true" #endDate></mat-datepicker>
+							</mat-form-field>
+						</div>
+					</div>
+					<label for="file-upload" class="custom-file-upload">
+						<i class="fa fa-cloud-upload"></i> {{labelText}}
+					</label>
+					<input id="file-upload" class="upload_file" type="file" (change)="previewFile()"/>
 					<mat-form-field class="preview-wrapper">
 						<textarea matInput placeholder="Превью" #eventPreview required></textarea>
 					</mat-form-field>
 					<div class="newsText">
 						<h5>Текст мероприятия</h5>
 						<app-froala (editorContentChange)=edtContent($event)></app-froala>
-						<!-- <textarea [froalaEditor]='options' [(froalaModel)]="editorContent" #eventText required></textarea> -->
 					</div>
 					<button mat-button (click)="onClickMe()" color="primary" [disabled]="!newsForm.form.valid" id="submit">Опубликовать</button>
 					<p *ngFor="let alert of alerts" class="alert-wrapper">

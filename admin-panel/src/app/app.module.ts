@@ -8,6 +8,7 @@ import * as $ from 'jquery';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +43,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { QuizComponent } from './show-quiz/quiz/quiz.component';
 import { ShowQuizComponent } from './show-quiz/show-quiz.component';
 import { FroalaComponent } from './froala/froala.component';
+import { MatNativeDateModule } from '@angular/material';
 
 
 @NgModule({
@@ -111,7 +113,7 @@ import { FroalaComponent } from './froala/froala.component';
 	providers: [
 		FormBuilder, 
 		DataService, 
-		DatePipe, 
+		DatePipe,
 		AuthGuard, 
 		AuthService,
 		{
