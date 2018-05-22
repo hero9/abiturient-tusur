@@ -1,40 +1,37 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth/auth-service';
+import { Component } from "@angular/core";
+import { NavController, AlertController, IonicPage } from "ionic-angular";
+import { AuthServiceProvider } from "./../../providers/auth/auth-service";
+import { LoginPage } from './../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-register',
-	templateUrl: 'register.html',
+  selector: "page-register",
+  templateUrl: "register.html"
 })
 export class RegisterPage {
-	
-	createSuccess = false;
-	registerCredentials = { name: '', email: '', password: '', confirmation_password: '' };
-	public registerForm: any;
+  createSuccess = false;
+  registerCredentials = { name: "", fullname: "", email: "", password: "" };
 
   constructor(
-    private nav: NavController,
+    private navCtrl: NavController,
     private auth: AuthServiceProvider,
-		private alertCtrl: AlertController
+    private alertCtrl: AlertController
   ) {}
 
   public register() {
-    if (this.registerCredentials.password != this.registerCredentials.confirmation_password) {
-      this.showPopup("Error", 'The password confirmation does not match.');
-    } else {
-      this.auth.register(this.registerCredentials).subscribe(success => {
+    this.auth.register(this.registerCredentials).subscribe(
+      success => {
         if (success) {
           this.createSuccess = true;
-          this.showPopup("Success", "Account created.");
+          this.showPopup("Успешно", "Аккаунт создан.");
         } else {
-          this.showPopup("Error", "Problem creating account.");
+          this.showPopup("Ошибка", "Возникла ошибка при создании аккаунта.");
         }
       },
-        error => {
-          this.showPopup("Error", error);
-        });
-    }
+      error => {
+        this.showPopup("Ошибка", error);
+      }
+    );
   }
 
   showPopup(title, text) {
@@ -43,10 +40,10 @@ export class RegisterPage {
       subTitle: text,
       buttons: [
         {
-          text: 'OK',
+          text: "OK",
           handler: data => {
             if (this.createSuccess) {
-              this.nav.popToRoot();
+              this.navCtrl.push( LoginPage );
             }
           }
         }
@@ -54,5 +51,4 @@ export class RegisterPage {
     });
     alert.present();
   }
-
 }

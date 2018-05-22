@@ -8,22 +8,26 @@
 </ion-header>
 
 <ion-content padding>
-	<form (ngSubmit)="login(email.value, password.value)" #loginForm="ngForm">
+	<ion-row>
+		<ion-col width-67>
+			<img class="tusur-logo" src="../../assets/imgs/tusur-logo.png" />
+		</ion-col>
+	</ion-row>
+	<form (ngSubmit)="login()" #registerForm="ngForm">
+
 		<ion-list>
 			<ion-item>
 				<ion-label floating>Email</ion-label>
-				<ion-input type="text" #email name="email"></ion-input>
+				<ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
 			</ion-item>
 
 			<ion-item>
 				<ion-label floating>Пароль</ion-label>
-				<ion-input type="password" #password name="password"></ion-input>
+				<ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
 			</ion-item>
 		</ion-list>
 
-		<div padding>
-			<button block type="submit" ion-button>Войти</button>
-		</div>
+		<button ion-button class="primary" block type="submit" [disabled]="!registerForm.form.valid">Логин</button>
+		<button ion-button block clear (click)="createAccount()">Создать аккаунт</button>
 	</form>
-
 </ion-content>

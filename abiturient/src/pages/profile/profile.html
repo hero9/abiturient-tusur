@@ -18,7 +18,7 @@
 				</div>
 			</ion-col>
 			<ion-col col-8>
-				<b class="profile_name">Константин Константинопольский</b>
+				<b class="profile_name">{{ currentUser?.name | titlecase }} {{ currentUser?.fullname | titlecase}}</b>
 				<br />
 				<small class="profile_status">поступающий на бакалавриат</small>
 				<button class="profile_button">Редактировать</button>

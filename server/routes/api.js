@@ -107,7 +107,7 @@ router.post("/signup", (req, res) => {
     .then(user => {
       if (user.length >= 1) {
         return res.status(409).json({
-          message: "Mail exists"
+          message: "Почта уже существует!"
         });
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -117,18 +117,20 @@ router.post("/signup", (req, res) => {
             });
           } else {
             const user = new Users({
-              _id: new mongoose.Types.ObjectId(),
+							_id: new mongoose.Types.ObjectId(),
+							name: req.body.name,
+							fullname: req.body.fullname,
               email: req.body.email,
 							password: hash
 						});
-            user
-              .save()
+						user
+							.save()
               .then(result => {
 								Scores.create( {userId: result._id, quizScore: 0}, (err, res) => {
 									if(err) return next(err);
 								});
                 res.status(200).json({
-                  success: "New user has been created"
+                  success: "Новый пользователь создан!"
                 });
               })
               .catch(error => {
@@ -241,8 +243,7 @@ router.get("/quiz", checkAuth, (req, res, next) => {
 });
 
 router.get("/students", checkAuth, (req, res) => {
-  db
-    .collection("students")
+  db.collection("students")
     .find()
     .toArray()
     .then(students => {
@@ -286,6 +287,13 @@ router.get("/pages", checkAuth, (req, res, next) => {
   Pages.find((err, products) => {
     if (err) return next(err);
     res.json(products);
+  });
+});
+
+router.get("/users", checkAuth, (req, res, next) => {
+  Users.findOne({ _id: req.userData._id }, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
   });
 });
 
