@@ -1,41 +1,47 @@
-<ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>Регистрация</ion-title>
-	</ion-navbar>
-</ion-header>
+<ion-content text-center>
+	<div class="bg">
+		<ion-row>
+			<ion-col width-67>
+				<img class="tusur-logo" src="../../assets/imgs/tusur-logo1.png" />
+			</ion-col>
+		</ion-row>
+		<div class="inputs">
+			<form (ngSubmit)="register()" #registerForm="ngForm">
 
-<ion-content padding>
+				<ion-list>
 
-	<form (ngSubmit)="register()" #registerForm="ngForm">
+					<ion-item>
+						<ion-label fixed>Аватар</ion-label>
+						<ion-avatar item-end>
+							<img src="{{ imgPreview }}" (click)="getPhoto()">
+						</ion-avatar>
+					</ion-item>
 
-		<ion-list>
+					<ion-item class="input-name">
+						<ion-label fixed>Имя</ion-label>
+						<ion-input type="text" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
+					</ion-item>
 
-			<ion-item>
-				<ion-label floating>Имя</ion-label>
-				<ion-input type="text" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
-			</ion-item>
+					<ion-item class="input-fullname">
+						<ion-label fixed>Фамилия</ion-label>
+						<ion-input type="text" name="fullname" [(ngModel)]="registerCredentials.fullname" required></ion-input>
+					</ion-item>
 
-			<ion-item>
-				<ion-label floating>Фамилия</ion-label>
-				<ion-input type="text" name="fullname" [(ngModel)]="registerCredentials.fullname" required></ion-input>
-			</ion-item>
+					<ion-item class="input-email">
+						<ion-label fixed>Email</ion-label>
+						<ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+					</ion-item>
 
-			<ion-item>
-				<ion-label floating>Email</ion-label>
-				<ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-			</ion-item>
+					<ion-item class="input-pass">
+						<ion-label fixed>Пароль</ion-label>
+						<ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+					</ion-item>
 
-			<ion-item>
-				<ion-label floating>Пароль</ion-label>
-				<ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-			</ion-item>
+				</ion-list>
 
-		</ion-list>
-
-		<button ion-button class="primary" block type="submit" [disabled]="!registerForm.form.valid">Регистрация</button>
-
-	</form>
+				<button ion-button class="primary login-btn" block type="submit" [disabled]="!registerForm.form.valid">Регистрация</button>
+				<button ion-button block clear class="register-btn" (click)="createAccount()">Войдите</button>
+			</form>
+		</div>
+	</div>
 </ion-content>

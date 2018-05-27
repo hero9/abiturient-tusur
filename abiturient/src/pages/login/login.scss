@@ -1,19 +1,66 @@
 page-login {
-	font-family: 'SFUIText-Regular';
-	text-align: center; 
-
-	.toolbar-title-md {
-    margin-right: 20%;
+  .bg {
+    height: 100%;
+    width: 100%;
+		background: linear-gradient(160deg, #d3ecf8 30%, #1e8fc5 70%);
+		img {
+			max-width: 60%;
+			margin-top: 25%;
+			margin-top: 27%;
+		}
+  }
+  .head {
+    position: absolute;
+    display: block;
+    color: #fff;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .inputs {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 80%;
+    color: #fff;
+		.input-email,
+		.input-pass {
+			opacity: 0.6;
+		}
+		.login-btn {
+			background-color: #01569a;
+		}
+		a {
+			color: white;
+			font-weight: 500;
+		}
+  }
+  ion-item {
+    background: #ffffff !important;
+		border-radius: 3px !important;
+		margin-bottom: 5px !important;
+    ion-input {
+			color: #000000;
+    }
+    ion-label {
+      color: #000000 !important;
+    }
+    .item-inner {
+      border: 0 !important;
+    }
+  }
+  button {
+    position: absolute;
+    display: block;
+    top: 50%;
+    background: #01569a !important;
+    color: white !important;
 	}
 
-}
-
-page-login img {
-	max-width: 150px;
-	margin-bottom: 100px;
-	margin-top: 30px;
-}
-
-.list-ios > .item-block:first-child {
-	border-top: 0;
+	.register-btn{
+		background-color: transparent !important;
+	}
 }

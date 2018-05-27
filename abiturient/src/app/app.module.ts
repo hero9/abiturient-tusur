@@ -6,10 +6,10 @@ import { HttpModule } from "@angular/http";
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from './../pages/profile/profile';
+import { EditProfilePage } from './../pages/profile/edit-profile/edit-profile';
 import { QuizPage } from '../pages/quiz/quiz';
 import { ShowQuestionPage } from './../pages/quiz/show-question/show-question';
 import { NewsPage } from '../pages/news/news';
@@ -21,14 +21,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth/auth-service';
 import { InterceptorModule } from '../providers/auth/interceptor.module';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 @NgModule({
   declarations: [
     MyApp,
-		HomePage,
 		LoginPage,
 		RegisterPage,
 		ProfilePage,
+		EditProfilePage,
 		QuizPage,
 		ShowQuestionPage,
 		NewsPage,	
@@ -54,10 +56,10 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-		HomePage,
 		LoginPage,
 		RegisterPage,
 		ProfilePage,
+		EditProfilePage,
 		QuizPage,
 		ShowQuestionPage,
 		NewsPage,
@@ -67,9 +69,11 @@ import { InterceptorModule } from '../providers/auth/interceptor.module';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+		SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 		AuthServiceProvider,
+		ImagePicker,
+  	Base64
   ]
 })
 export class AppModule {}

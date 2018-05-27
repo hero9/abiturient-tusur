@@ -116,8 +116,10 @@ router.post("/signup", (req, res) => {
               error: err
             });
           } else {
+						console.log(`${req.body.profileImage} server ${req.body.name}`);
             const user = new Users({
 							_id: new mongoose.Types.ObjectId(),
+							profileImage: req.body.profileImage,
 							name: req.body.name,
 							fullname: req.body.fullname,
               email: req.body.email,

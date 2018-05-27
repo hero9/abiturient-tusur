@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from './../../providers/auth/auth-service';
 import { HttpClient } from "@angular/common/http";
-import { HomePage } from './../home/home';
+import { LoginPage } from './../login/login';
 import { ShowEventsPage } from './show-events/show-events';
 
 @IonicPage()
@@ -29,7 +29,7 @@ export class EventsPage {
 	ionViewCanEnter() {
     if (!this.auth.isAuthenticated()) {
 			localStorage.removeItem('token');
-			this.navCtrl.push( HomePage );
+			this.navCtrl.push( LoginPage );
     }
 	}
 

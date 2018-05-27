@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from './../../../providers/auth/auth-service';
 import { QuizPage } from './../quiz';
+import { LoginPage } from '../../login/login';
 
 @IonicPage()
 @Component({
@@ -16,6 +17,13 @@ export class ShowQuestionPage {
 	message: string;
 	optionState: boolean = false;
 	optionID: string;
+
+	ionViewCanEnter() {
+    if (!this.auth.isAuthenticated()) {
+      localStorage.removeItem("token");
+      this.navCtrl.push( LoginPage );
+    }
+  }
 
   constructor(
 		public navCtrl: NavController, 

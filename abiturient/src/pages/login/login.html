@@ -1,33 +1,24 @@
-<ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>Логин</ion-title>
-	</ion-navbar>
-</ion-header>
-
-<ion-content padding>
-	<ion-row>
-		<ion-col width-67>
-			<img class="tusur-logo" src="../../assets/imgs/tusur-logo.png" />
-		</ion-col>
-	</ion-row>
-	<form (ngSubmit)="login()" #registerForm="ngForm">
-
-		<ion-list>
-			<ion-item>
-				<ion-label floating>Email</ion-label>
-				<ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-			</ion-item>
-
-			<ion-item>
-				<ion-label floating>Пароль</ion-label>
-				<ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-			</ion-item>
-		</ion-list>
-
-		<button ion-button class="primary" block type="submit" [disabled]="!registerForm.form.valid">Логин</button>
-		<button ion-button block clear (click)="createAccount()">Создать аккаунт</button>
-	</form>
+<ion-content text-center>
+	<div class="bg">
+			<ion-row>
+					<ion-col width-67>
+						<img class="tusur-logo" src="../../assets/imgs/tusur-logo1.png" />
+					</ion-col>
+				</ion-row>
+			<div class="inputs">
+				<form (ngSubmit)="login()" #registerForm="ngForm">
+						<ion-item class="input-email">
+								<ion-label fixed>Email</ion-label>
+								<ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+						</ion-item>
+						<ion-item class="input-pass">
+								<ion-label fixed>Пароль</ion-label>
+								<ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+						</ion-item>
+						<button ion-button class="primary login-btn" block type="submit" [disabled]="!registerForm.form.valid">Войти</button>
+						<button ion-button block clear class="register-btn" (click)="createAccount()">Создать аккаунт</button>
+				</form>
+					
+			</div>
+	</div>
 </ion-content>

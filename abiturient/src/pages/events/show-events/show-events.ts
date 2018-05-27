@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from './../../../providers/auth/auth-service';
 import { HttpClient } from "@angular/common/http";
+import { LoginPage } from '../../login/login';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,13 @@ export class ShowEventsPage {
 
 	event: {};
 	event_id : any;
+	
+	ionViewCanEnter() {
+    if (!this.auth.isAuthenticated()) {
+			localStorage.removeItem('token');
+			this.navCtrl.push( LoginPage );
+    }
+	}
 
   constructor(
 		public navCtrl: NavController, 

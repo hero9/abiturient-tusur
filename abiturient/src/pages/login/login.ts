@@ -5,7 +5,8 @@ import {
 	NavParams, 
 	AlertController, 
 	LoadingController, 
-	Loading 
+	Loading,
+	MenuController 
 } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth/auth-service';
 import { RegisterPage } from '../register/register';
@@ -26,24 +27,26 @@ export class LoginPage {
 		public navCtrl: NavController,
 		public navParams: NavParams,
 		public auth: AuthServiceProvider,
-		private alertCtrl: AlertController, 
+		private alertCtrl: AlertController,
+		private menu: MenuController,
 		private loadingCtrl: LoadingController
-	) {
-  }
+	) { }
 
-  public createAccount() {
-    this.navCtrl.push( RegisterPage );
+	ionViewDidEnter() {
+		this.menu.swipeEnable(false);
+	}
+
+  createAccount() {
+    this.navCtrl.push(RegisterPage);
 	}
 	
 	public login() {
 		this.showLoading()
-		console.log(this.registerCredentials);
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {      
 				this.navCtrl.setRoot( ProfilePage );
       } else {
 				this.showError("Данные не правильны!");
-				console.log(allowed);
       }
     },
       error => {
@@ -68,6 +71,6 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present(alert);
-  }
+	}
 
 }

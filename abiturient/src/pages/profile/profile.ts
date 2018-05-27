@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from './../../providers/auth/auth-service';
 import { HttpClient } from '@angular/common/http';
-import { HomePage } from '../home/home';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LoginPage } from './../login/login';
+import { EditProfilePage } from './edit-profile/edit-profile';
 
 
 @IonicPage()
@@ -13,24 +15,54 @@ import { HomePage } from '../home/home';
 export class ProfilePage {
 
 	currentUser: Object;
+	loading: any;
+
+	ionViewCanEnter() {
+    if (!this.auth.isAuthenticated()) {
+			localStorage.removeItem("token");
+			this.navCtrl.push( LoginPage );
+    }
+	}
 
   constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		public auth: AuthServiceProvider,
 		private _http: HttpClient,
-	) {
-		this._http.get(`${auth.rootUrl}/users`)
-		.subscribe(data => {
-			this.currentUser = data;
+		public loadingCtrl: LoadingController,
+  	private sanitizer: DomSanitizer
+	) {	}
+
+	ionViewDidLoad() {
+		this.getUser();
+	}
+
+	getUser() {
+		this.showLoader("Loading...");
+  	this.auth.getUser()
+    .subscribe(data => {
+      this.currentUser = {
+        name: data.name,
+				fullname: data.fullname,
+				profileImage: this.sanitizer.bypassSecurityTrustResourceUrl(data.profileImage)
+      };
+      this.loading.dismiss();
+    }, err => {
+      console.log(err);
+      this.loading.dismiss();
 		});
 	}
 
-	ionViewCanEnter() {
-    if (!this.auth.isAuthenticated()) {
-			localStorage.removeItem("token");
-			this.navCtrl.push( HomePage );
-    }
+	showLoader(msg){
+		this.loading = this.loadingCtrl.create({
+				content: msg
+		});
+	
+		this.loading.present();
+	}
+
+	editProfile() {
+		this.navCtrl.push( EditProfilePage );
 	}
 
 }

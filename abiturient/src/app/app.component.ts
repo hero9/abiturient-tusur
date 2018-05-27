@@ -3,10 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { LoginPage } from './../pages/login/login';
 import { ProfilePage } from './../pages/profile/profile';
 import { NewsPage } from '../pages/news/news';
 import { QuizPage } from '../pages/quiz/quiz';
-import { HomePage } from '../pages/home/home';
 import { EventsPage } from './../pages/events/events';
 
 @Component({
@@ -35,7 +35,7 @@ export class MyApp {
 			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' }
 		];
 		
-		this.activePage = this.pages[1]; 
+		this.activePage = this.pages[0]; 
 
 	}
 	
@@ -53,7 +53,7 @@ export class MyApp {
 	
 	logout(){
 		localStorage.removeItem("jwtToken");
-		this.nav.setRoot( HomePage );
+		this.nav.setRoot( LoginPage );
 	}
 
 	public checkActive(page): boolean {

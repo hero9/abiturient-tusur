@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { AlertController } from 'ionic-angular';
-import { HomePage } from "../home/home";
+import { LoginPage } from './../login/login';
 import { AuthServiceProvider } from "./../../providers/auth/auth-service";
 import { ShowQuestionPage } from "./show-question/show-question";
 
@@ -23,7 +23,7 @@ export class QuizPage {
   ionViewCanEnter() {
     if (!this.auth.isAuthenticated()) {
       localStorage.removeItem("token");
-      this.navCtrl.push(HomePage);
+      this.navCtrl.push( LoginPage );
     }
   }
 
@@ -59,12 +59,14 @@ export class QuizPage {
 			questions.forEach(question => {
 				if(quizIDs.indexOf(question._id) > -1){
 					this.answered.push(question);
+					this.answeredLength = this.answered.length;
 				} else {
 					this.notAnswered.push(question);
+					this.notAnsweredLength = this.notAnswered.length;
 				}
 			});
-			this.notAnsweredLength = this.notAnswered.length;
-			this.answeredLength = this.answered.length;
+			
+			
     });
   }
 }
