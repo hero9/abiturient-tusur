@@ -44,6 +44,8 @@ import { QuizComponent } from './show-quiz/quiz/quiz.component';
 import { ShowQuizComponent } from './show-quiz/show-quiz.component';
 import { FroalaComponent } from './froala/froala.component';
 import { MatNativeDateModule } from '@angular/material';
+import { FacultiesComponent } from './faculties/faculties.component';
+import { AddFacultiesComponent } from './faculties/add-faculties/add-faculties.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { MatNativeDateModule } from '@angular/material';
 		AuthComponent,
 		QuizComponent,
 		ShowQuizComponent,
-		FroalaComponent
+		FroalaComponent,
+		FacultiesComponent,
+		AddFacultiesComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,8 @@ import { MatNativeDateModule } from '@angular/material';
 			{ path: 'edit-page', component: EditPageComponent, canActivate: [AuthGuard] },
 			{ path: 'quiz', component: QuizComponent, canActivate: [AuthGuard] },
 			{ path: 'show-quiz', component: ShowQuizComponent, canActivate: [AuthGuard] },
+			{ path: 'faculties', component: FacultiesComponent, canActivate: [AuthGuard] },
+			{ path: 'add-faculties', component: AddFacultiesComponent, canActivate: [AuthGuard] },
 			{ path: 'auth', component: AuthComponent },
 
 		]),

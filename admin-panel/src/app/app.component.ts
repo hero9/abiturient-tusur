@@ -35,6 +35,7 @@ export class AppComponent implements OnInit, DoCheck {
 				{ name: "Настройки", route: "settings" },
 				{ name: "Страницы", route: "page" },
 				{ name: "Викторина", route:"show-quiz" },
+				{ name: "Факультеты", route:"faculties" }
 			];
 	}
 

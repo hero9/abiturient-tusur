@@ -4,7 +4,7 @@ const StudentSchema = new mongoose.Schema({
 	position : Number,
 	fullName : String,
 	dateOfBirth : Date,
-	spec : String
+	specialty : String
 });
 
 module.exports = mongoose.model('Student', StudentSchema);

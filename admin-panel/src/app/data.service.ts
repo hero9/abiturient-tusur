@@ -49,6 +49,17 @@ export class DataService {
 			.subscribe(res => console.log("question done"));
 	}
 
+	saveFaculty(title, specialties, description, grants){
+		const obj = {
+			title: title,
+			specialties: specialties,
+			description: description,
+			grants: grants
+		};
+		this.http.post("/api/faculties", obj)
+			.subscribe(res => console.log("Faculty done"));
+	}
+
 	savePages(id, title, content) {
     const obj = {
 			id: id,

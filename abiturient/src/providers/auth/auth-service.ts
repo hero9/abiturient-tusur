@@ -72,14 +72,12 @@ export class AuthServiceProvider {
     } else {
       return Observable.create(observer => {
         this.http.post(`${this.rootUrl}/signup`, {
-					profileImage: credentials.profileImage,
 					name: credentials.name.toLowerCase().trim(), fullname: credentials.fullname.toLowerCase().trim(),
 					email: credentials.email.toLowerCase().trim(), password: credentials.password.trim(),
 				})
         .map(res => res.json())
         .subscribe( data => {
 					console.log(data);
-					console.log(`${credentials.profileImage} hey`);
         });
         observer.next(true);
         observer.complete();

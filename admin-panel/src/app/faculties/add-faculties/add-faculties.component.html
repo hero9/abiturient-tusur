@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col">
+			<h3 class="title">Факультеты</h3>
+			<form #newsForm="ngForm" class="add-faculty">
+				<mat-form-field class="matFormField hundred">
+					<textarea matInput name="title" #title placeholder="Введите название..." matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+				</mat-form-field>
+
+				<mat-form-field class="matFormField hundred">
+					<textarea matInput name="description" #description placeholder="Введите описание..."></textarea>
+				</mat-form-field>
+
+				<mat-form-field class="matFormField">
+					<textarea class="" matInput placeholder="Количество грантов" name="grants" #grants matTextareaAutosize matAutosizeMinRows="1"
+					 matAutosizeMaxRows="5"></textarea>
+				</mat-form-field>
+
+				<mat-list class="matFormField" role="list">
+					<mat-list-item role="listitem" *ngFor="let spec of specialties"> {{ spec.title }} ({{ spec.points }})</mat-list-item>
+				</mat-list>
+
+				<div class="answer_wrapper">
+					<mat-form-field class="matFormField add_answer__options half">
+						<textarea class="quiz_textarea answer_input" matInput [(ngModel)]="specialties_add" placeholder="Добавьте специальность"
+						 name="specialties_add" #specialty matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+					</mat-form-field>
+					<mat-form-field class="matFormField">
+						<textarea class="quiz_textarea" matInput [(ngModel)]="points_add" placeholder="Количество баллов" name="points_add" #points
+						 matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+					</mat-form-field>
+					<i class="material-icons add_answer" (click)="addSpecialty(specialty.value, points.value)">add_circle</i>
+				</div>
+
+				<button class="btn" (click)="saveFaculty(title.value, description.value, grants.value); onClickMe()">Далее</button>
+				<p *ngFor="let alert of alerts" class="alert-wrapper">
+					<ngb-alert *ngIf="showAlert" [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+				</p>
+		</form>
+	</div>
+</div>

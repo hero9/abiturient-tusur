@@ -8,6 +8,7 @@ import { ProfilePage } from './../pages/profile/profile';
 import { NewsPage } from '../pages/news/news';
 import { QuizPage } from '../pages/quiz/quiz';
 import { EventsPage } from './../pages/events/events';
+import { FacultyPage } from '../pages/faculty/faculty';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,7 +33,8 @@ export class MyApp {
 			{ title: 'Личный кабинет', component: ProfilePage, icon: 'appname-person' },
 			{ title: 'Новости', component: NewsPage, icon: 'appname-news' },
 			{ title: 'Мероприятия', component: EventsPage, icon: 'appname-event' },
-			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' }
+			{ title: 'Викторина', component: QuizPage, icon: 'appname-quiz' },
+			{ title: 'Факультеты', component: FacultyPage, icon: 'appname-study'},
 		];
 		
 		this.activePage = this.pages[0]; 

@@ -16,6 +16,7 @@ const Quizes = require("../models/quizes.js");
 const jwt = require("jsonwebtoken");
 const checkAuth = require('../middleware/check-auth');
 const Scores = require('../models/scores');
+const Faculties = require('../models/faculties');
 
 
 mongoose.connect("mongodb://localhost:27017/tusur");
@@ -116,10 +117,8 @@ router.post("/signup", (req, res) => {
               error: err
             });
           } else {
-						console.log(`${req.body.profileImage} server ${req.body.name}`);
             const user = new Users({
 							_id: new mongoose.Types.ObjectId(),
-							profileImage: req.body.profileImage,
 							name: req.body.name,
 							fullname: req.body.fullname,
               email: req.body.email,
@@ -196,6 +195,18 @@ router.post("/quiz", checkAuth, (req, res, next) => {
 	});
 });
 
+router.post("/faculties", checkAuth, (req, res, next) => {
+  Faculties.create({
+		title: req.body.title,
+		specialties: req.body.specialties,
+		description: req.body.description,
+		grants: req.body.grants
+	},(err, post) => {
+		if (err) return next(err);
+		res.json(post);
+	});
+});
+
 router.post("/quiz/answer/:id", checkAuth, (req, res, next) => {
 	Scores.findOne({userId: req.userData._id}, (err, res) => {
 		let answered = res.answeredQuestions;
@@ -241,6 +252,13 @@ router.get("/quiz", checkAuth, (req, res, next) => {
   Quizes.find((err, questions) => {
 		if (err) return next(err);
 		res.json(questions);
+  });
+});
+
+router.get("/faculties", checkAuth, (req, res, next) => {
+  Faculties.find((err, faculties) => {
+		if (err) return next(err);
+		res.json(faculties);
   });
 });
 
@@ -362,6 +380,26 @@ router.put("/quiz/:id", checkAuth, (req, res, next) => {
     res.json(post);
   });
 });
+
+router.put("/user", checkAuth, (req, res, next) => {
+	bcrypt.hash(req.body.password, 10, (err, hash) => {
+		if(err){
+			console.log(err);
+		} else {
+			Users.findByIdAndUpdate( {_id: req.userData._id}, {
+				email: req.body.email,
+				password: hash
+			}, (err, post) => {
+				if (err) {
+					return next(err);
+				}
+				res.json(post);
+			});
+			
+		}	
+	})
+});
+
 
 /* =======  DELETE Requests ======== */
 router.delete("/news/:id", checkAuth, (req, res) => {

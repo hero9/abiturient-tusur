@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from './../../providers/auth/auth-service';
-import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginPage } from './../login/login';
 import { EditProfilePage } from './edit-profile/edit-profile';
@@ -28,7 +27,6 @@ export class ProfilePage {
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		public auth: AuthServiceProvider,
-		private _http: HttpClient,
 		public loadingCtrl: LoadingController,
   	private sanitizer: DomSanitizer
 	) {	}

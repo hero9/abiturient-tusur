@@ -8,8 +8,6 @@ import {
 	LoadingController
 } from "ionic-angular";
 import { AuthServiceProvider } from "./../../providers/auth/auth-service";
-import { ImagePicker } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64';
 
 @IonicPage()
 @Component({
@@ -20,38 +18,18 @@ export class RegisterPage {
 	
 	createSuccess = false;
 	loading: any;
-	registerCredentials = { profileImage:"", name: "", fullname: "", email: "", password: "" };
-	imgPreview = 'assets/imgs/avatar.png';
+	registerCredentials = { name: "", fullname: "", email: "", password: "" };
 
   constructor(
     private navCtrl: NavController,
 		private auth: AuthServiceProvider,
 		private menu: MenuController,
 		private alertCtrl: AlertController,
-		private imagePicker: ImagePicker,
-		private base64: Base64,
 		public loadingCtrl: LoadingController,
 	) { }
 	
 	ionViewDidEnter() {
 		this.menu.swipeEnable(false);
-	}
-	
-	getPhoto() {
-		let options = {
-			maximumImagesCount: 1
-		};
-		this.imagePicker.getPictures(options).then((results) => {
-			for (var i = 0; i < results.length; i++) {
-					this.imgPreview = results[i];
-					this.base64.encodeFile(results[i]).then((base64File: string) => {
-						this.registerCredentials.profileImage = base64File;
-						console.log(`${base64File} hooop`);
-					}, (err) => {
-						console.log(err);
-					});
-			}
-		}, (err) => { });
 	}
 
 	showLoader(){

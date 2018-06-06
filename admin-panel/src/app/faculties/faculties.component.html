@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col faculties">
+			<h3 class="title">Факультеты</h3>
+			<mat-card *ngFor="let item of faculties" class="faculty_card">
+				<!-- <button mat-icon-button class="edit_icon" (click)="deleteQuestion(item._id)">
+					<mat-icon>
+						<i class="material-icons">delete</i>
+					</mat-icon>
+				</button>
+				<br /> -->
+				<mat-card-header>
+					<mat-card-title class="question_title"> {{ item.title }} </mat-card-title>
+				</mat-card-header>
+				<p class="question_weight">Количество грантов: {{ item.grants }} </p>
+				<p class="question_weight">Описание: {{ item.description }} </p>
+				<p>Направления:</p>
+				<mat-list *ngFor="let spec of item.specialties">
+					<mat-list-item class="quiz_answer"> {{ spec.title }} <p class="spec-points"> ({{ spec.points }}) </p></mat-list-item>
+				</mat-list>
+			</mat-card>
+			<button mat-fab color="warn" class="add__btn" [routerLink]="'/add-faculties'">
+				<i class="material-icons">add</i>
+			</button>
+		</div>
+	</div>
+</div>

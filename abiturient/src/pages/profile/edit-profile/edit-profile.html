@@ -6,10 +6,37 @@
 
 </ion-header>
 
-
 <ion-content padding>
-	Загрузка фотографии
-	<button (click)="uploadImage()" full color="primary">Загрузить</button>
-
-	<p align="center">{{ myphoto }}</p>
+	<div class="bg">
+		<div class="inputs">
+			<form (ngSubmit)="updateData()" #updateDataForm="ngForm">
+	
+				<ion-list>
+		
+					<ion-item class="input-name">
+						<ion-label fixed>Имя</ion-label>
+						<ion-input type="text" name="name" placeholder="{{ currentUser?.name | titlecase }}" disabled></ion-input>
+					</ion-item>
+		
+					<ion-item class="input-fullname">
+						<ion-label fixed>Фамилия</ion-label>
+						<ion-input type="text" name="fullname" placeholder="{{ currentUser?.fullname | titlecase }}" disabled></ion-input>
+					</ion-item>
+		
+					<ion-item class="input-email">
+						<ion-label fixed>Email</ion-label>
+						<ion-input type="text" name="email" [(ngModel)]="updateDataCredentials.email" required></ion-input>
+					</ion-item>
+		
+					<ion-item class="input-pass">
+						<ion-label fixed>Пароль</ion-label>
+						<ion-input type="password" name="password" [(ngModel)]="updateDataCredentials.password" required></ion-input>
+					</ion-item>
+		
+				</ion-list>
+		
+				<button ion-button class="primary login-btn" block type="submit" [disabled]="!updateDataForm.form.valid">Сохранить</button>
+			</form>
+		</div>
+	</div>	
 </ion-content>

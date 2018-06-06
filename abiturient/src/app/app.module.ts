@@ -16,13 +16,12 @@ import { NewsPage } from '../pages/news/news';
 import { ShowNewsPage } from './../pages/news/show-news/show-news';
 import { EventsPage } from './../pages/events/events';
 import { ShowEventsPage } from './../pages/events/show-events/show-events';
+import { FacultyPage } from './../pages/faculty/faculty';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth/auth-service';
 import { InterceptorModule } from '../providers/auth/interceptor.module';
-import { ImagePicker } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64';
 
 @NgModule({
   declarations: [
@@ -37,6 +36,7 @@ import { Base64 } from '@ionic-native/base64';
 		ShowNewsPage,
 		EventsPage,
 		ShowEventsPage,
+		FacultyPage
   ],
   imports: [
 		BrowserModule,
@@ -65,15 +65,15 @@ import { Base64 } from '@ionic-native/base64';
 		NewsPage,
 		ShowNewsPage,
 		EventsPage,
-		ShowEventsPage
+		ShowEventsPage,
+		FacultyPage
   ],
   providers: [
     StatusBar,
 		SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 		AuthServiceProvider,
-		ImagePicker,
-  	Base64
+		EditProfilePage
   ]
 })
 export class AppModule {}

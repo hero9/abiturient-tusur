@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button icon-only menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Факультеты</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngFor="let item of faculties">
+		<ion-card-header>
+			{{ item.title }}
+		</ion-card-header>
+		<ion-card-content>
+			<p>Количество грантов: {{ item.grants }}</p>
+			<p>Описание: {{ item.description }}</p>
+			<div>Направления
+				<p *ngFor="let spec of item.specialties">{{ spec.title }} ({{ spec.points }})</p>
+			</div>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
