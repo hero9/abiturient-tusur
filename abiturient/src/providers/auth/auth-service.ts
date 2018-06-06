@@ -26,7 +26,7 @@ export class AuthServiceProvider {
   data: any;
 	message: "";
 	currentUser: User;
-	rootUrl: string = 'http://localhost:8080/api';
+	rootUrl: string = 'http://212.237.5.70:8080/api';
 	
 
   constructor( 

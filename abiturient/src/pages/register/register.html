@@ -2,20 +2,13 @@
 	<div class="bg">
 		<ion-row>
 			<ion-col width-67>
-				<img class="tusur-logo" src="../../assets/imgs/tusur-logo1.png" />
+				<img class="tusur-logo" src="assets/imgs/tusur-logo1.png" />
 			</ion-col>
 		</ion-row>
 		<div class="inputs">
 			<form (ngSubmit)="register()" #registerForm="ngForm">
 
 				<ion-list>
-
-					<ion-item>
-						<ion-label fixed>Аватар</ion-label>
-						<ion-avatar item-end>
-							<img src="{{ imgPreview }}" (click)="getPhoto()">
-						</ion-avatar>
-					</ion-item>
 
 					<ion-item class="input-name">
 						<ion-label fixed>Имя</ion-label>

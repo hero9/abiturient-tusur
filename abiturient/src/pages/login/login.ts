@@ -41,13 +41,11 @@ export class LoginPage {
 	}
 	
 	public login() {
-		this.showLoading()
+		this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {      
 				this.navCtrl.setRoot( ProfilePage );
-				this.loading.dismiss();
       } else {
-				this.loading.dismiss();
 				this.showError("Данные не правильны!");
       }
     },
@@ -66,7 +64,6 @@ export class LoginPage {
   }
  
   showError(text) {
-    this.loading.dismiss();
  
     let alert = this.alertCtrl.create({
       title: 'Ошибка',
