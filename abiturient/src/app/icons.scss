@@ -10,27 +10,27 @@ ion-icon {
     height: 1em;
   }
   &[class*="appname-person"] {
-    mask-image: url(assets/imgs/icon-person.svg);
+    mask-image: url(../../assets/imgs/icon-person.svg);
   }
   &[class*="appname-list"] {
-    mask-image: url(assets/imgs/icon-list.svg);
+    mask-image: url(../../assets/imgs/icon-list.svg);
   }
   &[class*="appname-study"] {
-    mask-image: url(assets/imgs/icon-study.svg);
+    mask-image: url(../../assets/imgs/icon-study.svg);
   }
   &[class*="appname-quiz"] {
-    mask-image: url(assets/imgs/icon-quiz.svg);
+    mask-image: url(../../assets/imgs/icon-quiz.svg);
   }
   &[class*="appname-calc"] {
-    mask-image: url(assets/imgs/icon-calc.svg);
+    mask-image: url(../../assets/imgs/icon-calc.svg);
 	}
 	&[class*="appname-logout"] {
-		mask-image: url(assets/imgs/logout.svg)
+		mask-image: url(../../assets/imgs/logout.svg)
 	}
 	&[class*="appname-news"] {
-		mask-image: url(assets/imgs/icon-news.svg)
+		mask-image: url(../../assets/imgs/icon-news.svg)
 	}
 	&[class*="appname-event"] {
-		mask-image: url(assets/imgs/icon-event.svg)
+		mask-image: url(../../assets/imgs/icon-event.svg)
 	}
 }

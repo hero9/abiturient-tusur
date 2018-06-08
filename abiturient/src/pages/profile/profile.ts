@@ -36,7 +36,6 @@ export class ProfilePage {
 	}
 
 	getUser() {
-		this.showLoader("Loading...");
   	this.auth.getUser()
     .subscribe(data => {
       this.currentUser = {
@@ -44,10 +43,8 @@ export class ProfilePage {
 				fullname: data.fullname,
 				profileImage: this.sanitizer.bypassSecurityTrustResourceUrl(data.profileImage)
       };
-      this.loading.dismiss();
     }, err => {
       console.log(err);
-      this.loading.dismiss();
 		});
 	}
 
